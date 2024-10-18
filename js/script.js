@@ -64,9 +64,57 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       cart.forEach((item) => {
         const li = document.createElement("li");
-        li.textContent = `${item.name} - $${item.price}`;
+        const img = document.createElement("img");
+        img.src = item.image;
+        img.alt = item.name;
+        img.style.width = "40px";
+        img.style.height = "30px";
+        img.style.marginRight = "10px";
+
+        // Append image to the list item
+        li.appendChild(img);
+
+        // Add the item name and price
+        li.appendChild(
+          document.createTextNode(`${item.name} - $${item.price}`)
+        );
+
         cartItemsElement.appendChild(li);
       });
     }
+  }
+  function updateCart() {
+    cartItemsElement.innerHTML = "";
+
+    // Check if the cart is empty
+    if (cart.length === 0) {
+      const emptyMessage = document.createElement("li");
+      emptyMessage.textContent = "Shopping cart is empty!";
+      cartItemsElement.appendChild(emptyMessage);
+    } else {
+      cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.classList.add("cart-item");
+
+        // Add product image and name
+        li.innerHTML = `
+          <img src="${item.image}" alt="${item.alt}" class="cart-item-img" />
+          ${item.name} - $${item.price}
+          <button class="delete-item-btn" data-index="${index}">&#x2715;</button>
+        `;
+
+        cartItemsElement.appendChild(li);
+      });
+    }
+
+    // Add event listener to all delete buttons
+    const deleteButtons = document.querySelectorAll(".delete-item-btn");
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const index = this.getAttribute("data-index");
+        cart.splice(index, 1); // Remove item from cart array
+        updateCart(); // Update the cart display
+      });
+    });
   }
 });

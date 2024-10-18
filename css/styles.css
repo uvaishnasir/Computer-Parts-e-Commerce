@@ -105,14 +105,17 @@ nav {
 
 #cart-items {
   list-style-type: none;
-  padding: 10px 0;
+  padding: 0px;
+  margin: 0px;
   text-align: center;
+  overflow-y: auto; /* Highlighted change */
+  max-height: 90vh;
 }
 
 #cart-items li {
   color: #000;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #979797;
 }
 
 .cart-header {
@@ -121,9 +124,31 @@ nav {
   justify-content: center;
   align-items: center;
   position: relative;
-  border-bottom: 1px solid #ccc;
 }
 
 .cart-header h2 {
   color: #f4f4f4;
+  margin: 15px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  position: relative;
+}
+
+.cart-item-img {
+  width: 50px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.delete-item-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
 }
