@@ -1,0 +1,129 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+header {
+  background-color: #333;
+  color: white;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+}
+
+header h2 {
+  margin: 0;
+}
+
+nav {
+  margin: 15px 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+#cart-btn {
+  margin-left: auto;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.product-card {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.add-to-cart {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cart {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 350px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s;
+}
+
+.cart.open {
+  right: 0;
+}
+
+#close-cart {
+  background-color: transparent;
+  color: #f4f4f4;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  left: 15px;
+}
+
+#cart-items {
+  list-style-type: none;
+  padding: 10px 0;
+  text-align: center;
+}
+
+#cart-items li {
+  color: #000;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-header {
+  background-color: #4caf50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-header h2 {
+  color: #f4f4f4;
+}

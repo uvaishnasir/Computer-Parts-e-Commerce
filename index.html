@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computer Parts Store</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Computer Parts Store</h2>
+      <nav>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">About</a>
+      </nav>
+      <button id="cart-btn">🛒 Cart</button>
+    </header>
+
+    <div id="cart" class="cart">
+      <div class="cart-header">
+        <button id="close-cart">&#x2715;</button>
+        <h2>My Cart</h2>
+      </div>
+      <ul id="cart-items"></ul>
+    </div>
+
+    <main>
+      <div class="product-grid" id="product-grid">
+        <!-- Products will be dynamically inserted here -->
+      </div>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
