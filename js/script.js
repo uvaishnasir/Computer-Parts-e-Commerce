@@ -1,5 +1,6 @@
 let products = [];
-let cart = [];
+let cart = new Map(); // Key: product ID, Value: { product details and quantity }
+
 document.addEventListener("DOMContentLoaded", function () {
   const cartBtn = document.getElementById("cart-btn");
   const closeCartBtn = document.getElementById("close-cart");
@@ -32,7 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
           const productId =
             this.closest(".product-card").getAttribute("data-id");
           const product = products.find((p) => p.id == productId);
-          cart.push(product);
+
+          // Check if item already exists in the cart
+          if (cart.has(product.id)) {
+            // If it exists, increment the quantity
+            const cartItem = cart.get(product.id);
+            cartItem.quantity++;
+          } else {
+            // If not, add the product with quantity 1
+            cart.set(product.id, { ...product, quantity: 1 });
+          }
           updateCart();
         });
       });
@@ -52,57 +62,33 @@ document.addEventListener("DOMContentLoaded", function () {
     cartElement.classList.remove("open");
   });
 
-  // Update cart items display
+  // Update cart items to display
   function updateCart() {
     cartItemsElement.innerHTML = "";
-
     // Check if the cart is empty
-    if (cart.length === 0) {
+    if (cart.size === 0) {
       const emptyMessage = document.createElement("li");
       emptyMessage.textContent = "Shopping cart is empty!";
       cartItemsElement.appendChild(emptyMessage);
     } else {
-      cart.forEach((item) => {
-        const li = document.createElement("li");
-        const img = document.createElement("img");
-        img.src = item.image;
-        img.alt = item.name;
-        img.style.width = "40px";
-        img.style.height = "30px";
-        img.style.marginRight = "10px";
-
-        // Append image to the list item
-        li.appendChild(img);
-
-        // Add the item name and price
-        li.appendChild(
-          document.createTextNode(`${item.name} - $${item.price}`)
-        );
-
-        cartItemsElement.appendChild(li);
-      });
-    }
-  }
-  function updateCart() {
-    cartItemsElement.innerHTML = "";
-
-    // Check if the cart is empty
-    if (cart.length === 0) {
-      const emptyMessage = document.createElement("li");
-      emptyMessage.textContent = "Shopping cart is empty!";
-      cartItemsElement.appendChild(emptyMessage);
-    } else {
-      cart.forEach((item, index) => {
+      cart.forEach((item, id) => {
         const li = document.createElement("li");
         li.classList.add("cart-item");
-
         // Add product image and name
         li.innerHTML = `
+        <div class="cart-item-info">
           <img src="${item.image}" alt="${item.alt}" class="cart-item-img" />
-          ${item.name} - $${item.price}
-          <button class="delete-item-btn" data-index="${index}">&#x2715;</button>
+          ${item.name} - $${item.quantity * item.price}
+          <button class="delete-item-btn" data-id="${id}">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+        <div class="quantity-controls">
+          <button class="decrease-quantity-btn" data-id="${id}">-</button>
+          <div>${item.quantity}</div>
+          <button class="increase-quantity-btn" data-id="${id}">+</button>
+        </div>
         `;
-
         cartItemsElement.appendChild(li);
       });
     }
@@ -111,9 +97,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const deleteButtons = document.querySelectorAll(".delete-item-btn");
     deleteButtons.forEach((button) => {
       button.addEventListener("click", function () {
-        const index = this.getAttribute("data-index");
-        cart.splice(index, 1); // Remove item from cart array
+        const id = this.getAttribute("data-id");
+        cart.delete(parseInt(id)); // Remove item from cart array
         updateCart(); // Update the cart display
+      });
+    });
+
+    // Add event listeners to increase quantity buttons
+    const increaseButtons = document.querySelectorAll(".increase-quantity-btn");
+    increaseButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const id = this.getAttribute("data-id");
+        const cartItem = cart.get(parseInt(id));
+        cartItem.quantity++;
+        updateCart();
+      });
+    });
+    // Add event listeners to decrease quantity buttons
+    const decreaseButtons = document.querySelectorAll(".decrease-quantity-btn");
+    decreaseButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const id = this.getAttribute("data-id");
+        const cartItem = cart.get(parseInt(id));
+        if (cartItem.quantity > 1) {
+          cartItem.quantity--;
+        } else {
+          cart.delete(parseInt(id)); // Remove item from cart array if quantity is 1
+        }
+        updateCart();
       });
     });
   }
