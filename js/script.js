@@ -70,15 +70,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     cartCountElement.textContent = totalItems;
   }
+  function calculateSubtotal() {
+    let subtotal = 0;
+    cart.forEach((item) => {
+      subtotal += item.quantity * item.price;
+    });
+    return subtotal;
+  }
 
   // Update cart items to display
   function updateCart() {
+    updateCartCount(); // Update the cart count whenever the cart is updated
     cartItemsElement.innerHTML = "";
     // Check if the cart is empty
     if (cart.size === 0) {
+      // Add empty cart image
+      const emptyCartImg = document.createElement("img");
+      emptyCartImg.src = "/assets/shopping_cart_off.png";
+      emptyCartImg.alt = "...loading empty cart image";
+      emptyCartImg.style.width = "120px";
+      emptyCartImg.style.display = "block";
+      emptyCartImg.style.margin = "25px auto";
+      // Create the empty message
       const emptyMessage = document.createElement("li");
-      emptyMessage.textContent = "Shopping cart is empty!";
-      cartItemsElement.appendChild(emptyMessage);
+      emptyMessage.textContent = "SHOPPING CART IS EMPTY!";
+      cartItemsElement.appendChild(emptyCartImg); // Append the image first
+      cartItemsElement.appendChild(emptyMessage); // Then append the message
     } else {
       cart.forEach((item, id) => {
         const li = document.createElement("li");
@@ -87,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         li.innerHTML = `
         <div class="cart-item-info">
           <img src="${item.image}" alt="${item.alt}" class="cart-item-img" />
-          ${item.name} - $${item.quantity * item.price}
+          ${item.name} - $${item.price}
           <button class="delete-item-btn" data-id="${id}">
             <span class="material-icons">delete</span>
           </button>
@@ -100,6 +117,23 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         cartItemsElement.appendChild(li);
       });
+      // Subtotal container
+      const subTotal = document.createElement("div");
+      subTotal.classList.add("cart-subtotal");
+      const subTotalLabel = document.createElement("span");
+      subTotalLabel.textContent = "Subtotal:";
+      const subTotalValue = document.createElement("span");
+      subTotalValue.textContent = "$" + calculateSubtotal();
+      // Append both spans to the subtotal container
+      subTotal.appendChild(subTotalLabel);
+      subTotal.appendChild(subTotalValue);
+      cartItemsElement.appendChild(subTotal);
+
+      //checkout button.
+      const checkoutBtn = document.createElement("button");
+      checkoutBtn.textContent = "Checkout";
+      checkoutBtn.classList.add("checkout-btn");
+      cartItemsElement.appendChild(checkoutBtn);
     }
 
     // Add event listener to all delete buttons
@@ -136,6 +170,5 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCart();
       });
     });
-    updateCartCount(); // Update the cart count whenever the cart is updated
   }
 });
