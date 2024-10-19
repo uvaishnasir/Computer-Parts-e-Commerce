@@ -56,11 +56,20 @@ document.addEventListener("DOMContentLoaded", function () {
     cartElement.classList.add("open");
     updateCart();
   });
-
   // Close Cart
   closeCartBtn.addEventListener("click", () => {
     cartElement.classList.remove("open");
   });
+
+  function updateCartCount() {
+    const cartCountElement = document.getElementById("cart-count");
+    let totalItems = 0;
+
+    cart.forEach((item) => {
+      totalItems += item.quantity; // Update total with quantity
+    });
+    cartCountElement.textContent = totalItems;
+  }
 
   // Update cart items to display
   function updateCart() {
@@ -80,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <img src="${item.image}" alt="${item.alt}" class="cart-item-img" />
           ${item.name} - $${item.quantity * item.price}
           <button class="delete-item-btn" data-id="${id}">
-            <i class="fas fa-trash-alt"></i>
+            <span class="material-icons">delete</span>
           </button>
         </div>
         <div class="quantity-controls">
@@ -127,5 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCart();
       });
     });
+    updateCartCount(); // Update the cart count whenever the cart is updated
   }
 });

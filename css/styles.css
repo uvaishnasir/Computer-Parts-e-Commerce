@@ -36,13 +36,27 @@ nav {
 }
 
 #cart-btn {
+  position: relative;
   margin-left: auto;
-  background-color: #4caf50;
+  background-color: transparent;
   color: white;
   border: none;
-  padding: 10px 10px;
+  padding-right: 15px;
+  margin-bottom: -10px;
   cursor: pointer;
-  border-radius: 5px;
+}
+.material-icons {
+  font-size: 33px !important; /* Force your custom size */
+  vertical-align: middle !important; /* Ensure vertical alignment */
+}
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: 28px;
+  background-color: transparent;
+  color: white;
+  font-size: 11px;
 }
 
 .product-grid {
