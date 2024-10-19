@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (cart.size === 0) {
       // Add empty cart image
       const emptyCartImg = document.createElement("img");
-      emptyCartImg.src = "/assets/emptyCart.png";
-      emptyCartImg.alt = "...loading empty cart image";
+      emptyCartImg.src = "./assets/emptyCart.png";
+      emptyCartImg.alt = "Empty Cart Image";
       emptyCartImg.style.width = "120px";
       emptyCartImg.style.display = "block";
       emptyCartImg.style.margin = "25px auto";
