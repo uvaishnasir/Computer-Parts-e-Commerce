@@ -444,57 +444,13 @@ header .menu-dropdown-content a:hover {
   width: 30px;
   height: 30px;
 }
-/* ! header end */
 
-/*? slider section start */
-.brand-slider {
-  margin: 20px 0;
-  text-align: center;
+.offer-container {
+  margin: 30px 60px;
 }
-
-.brand-slider h2 {
-  margin-bottom: 15px;
+.offer-image {
+  margin-bottom: 20px;
 }
-
-.slider {
-  overflow: hidden;
-  position: relative;
+.offer-image img {
   width: 100%;
-}
-
-.slider-wrapper {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.slider img {
-  max-width: 150px; /* Adjust size as needed */
-  margin: 0 10px;
-}
-
-@media (max-width: 768px) {
-  .slider img {
-    max-width: 100px; /* Adjust size for smaller screens */
-  }
-}
-
-
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 10;
-}
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
 }

@@ -3,70 +3,70 @@
     "id": 1,
     "name": "High-Performance CPU",
     "price": 250,
-    "image": "assets/part1.jpeg",
+    "image": "assets/products/part1.jpeg",
     "alt": "CPU"
   },
   {
     "id": 2,
     "name": "Gaming GPU",
     "price": 400,
-    "image": "assets/part2.jpeg",
+    "image": "assets/products/part2.jpeg",
     "alt": "GPU"
   },
   {
     "id": 3,
     "name": "16GB RAM",
     "price": 120,
-    "image": "assets/part3.jpeg",
+    "image": "assets/products/part3.jpeg",
     "alt": "RAM"
   },
   {
     "id": 4,
     "name": "1TB SSD",
     "price": 150,
-    "image": "assets/part4.jpg",
+    "image": "assets/products/part4.jpg",
     "alt": "SSD"
   },
   {
     "id": 5,
     "name": "Gaming Motherboard",
     "price": 200,
-    "image": "assets/part5.png",
+    "image": "assets/products/part5.png",
     "alt": "Motherboard"
   },
   {
     "id": 6,
     "name": "650W Power Supply",
     "price": 80,
-    "image": "assets/part6.jpg",
+    "image": "assets/products/part6.jpg",
     "alt": "Power Supply"
   },
   {
     "id": 7,
     "name": "RGB CPU Cooler",
     "price": 60,
-    "image": "assets/part7.jpg",
+    "image": "assets/products/part7.jpg",
     "alt": "CPU Cooler"
   },
   {
     "id": 8,
     "name": "Mechanical Keyboard",
     "price": 90,
-    "image": "assets/part8.jpg",
+    "image": "assets/products/part8.jpg",
     "alt": "Keyboard"
   },
   {
     "id": 9,
     "name": "Gaming Mouse",
     "price": 40,
-    "image": "assets/part9.jpg",
+    "image": "assets/products/part9.jpg",
     "alt": "Mouse"
   },
   {
     "id": 10,
     "name": "24-inch Gaming Monitor",
     "price": 300,
-    "image": "assets/part10.jpg",
+    "image": "assets/products/part10.jpg",
     "alt": "Monitor"
   }
 ]
