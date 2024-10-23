@@ -447,10 +447,12 @@ header .menu-dropdown-content a:hover {
 
 .offer-container {
   margin: 30px 60px;
+  width: 100%;
 }
 .offer-image {
   margin-bottom: 20px;
+  width: 100%;
 }
 .offer-image img {
-  width: 100%;
+  width: 90%;
 }
