@@ -440,19 +440,85 @@ header .menu-dropdown-content a:hover {
   border-radius: 5px;
 }
 
+/* responsiveness of header*/
+/* Existing CSS above */
+
+/* Adjust spacing for menu items */
+.menu-list {
+  column-gap: 15px; /* Reduce gap for smaller screens */
+}
+
+/* Ensure icons stay proportionate */
+.header-right i {
+  font-size: 20px;
+}
+
 #logo-img {
-  width: 30px;
+  width: auto;
   height: 30px;
 }
 
 .offer-container {
-  margin: 30px 60px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
+
 .offer-image {
   margin-bottom: 20px;
-  width: 100%;
+  width: 90%; /* Consistent width for all images */
 }
+
 .offer-image img {
-  width: 90%;
+  width: 100%;
+  height: auto;
+  display: block;
 }
+
+@media (max-width: 650px) {
+  .offer-image {
+    width: 95%;
+  }
+  .offer-container {
+    margin: 450px auto;
+  }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 650px) {
+  .header-row {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align items */
+    padding: 5px; /* Add some padding */
+  }
+
+  .header-left {
+    margin-bottom: 5px; /* Space between logo and navigation */
+  }
+
+  .header-center .menu-list {
+    flex-direction: column; /* Stack menu items vertically */
+    row-gap: 5px; /* Space between menu items */
+    align-items: center; /* Center align menu items */
+  }
+
+  .header-right {
+    margin-top: 5px; /* Space between menu and icons */
+    display: flex; /* Ensure the header-right is displayed as flex */
+    justify-content: center; /* Center align icons */
+    flex-wrap: wrap; /* Allow wrapping of icons */
+  }
+
+  .header-right-links {
+    column-gap: 5px; /* Space between icons */
+    justify-content: center; /* Center align the icons */
+  }
+
+  .header-right i {
+    font-size: 20px; /* Adjust icon size */
+  }
+}
+
+
