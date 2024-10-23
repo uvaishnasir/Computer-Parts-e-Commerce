@@ -393,7 +393,7 @@ header .menu-dropdown-content a:hover {
 }
 
 .megamenu-wrapper .megamenu-product-title {
-  margin-left: 20px;
+  margin-left: 25px;
   margin-bottom: 10px;
   font-size: 16px;
   font-weight: 500;
@@ -417,27 +417,6 @@ header .menu-dropdown-content a:hover {
 }
 .megamenu-wrapper .megamenu-menu-list li a:hover {
   color: #1367ef;
-}
-
-.megamenu-wrapper .megamenu-single-title {
-  font-size: 18px;
-  font-weight: 500;
-  color: #000;
-}
-
-.megamenu-wrapper .megamenu-single-subtitle {
-  font-size: 14px;
-  font-weight: 400;
-  margin-bottom: 10px;
-}
-
-.megamenu-wrapper .megamenu-single-button {
-  margin-top: 5px;
-  padding: 10px 20px;
-  background-color: #1367ef;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
 }
 
 /* responsiveness */

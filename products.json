@@ -64,9 +64,23 @@
   },
   {
     "id": 10,
-    "name": "24-inch Gaming Monitor",
-    "price": 300,
+    "name": "Gaming Monitor",
+    "price": 200,
     "image": "assets/products/part10.jpg",
     "alt": "Monitor"
+  },
+  {
+    "id": 11,
+    "name": "CPU",
+    "price": 200,
+    "image": "assets/products/part1.jpeg",
+    "alt": "CPU"
+  },
+  {
+    "id": 12,
+    "name": "GPU",
+    "price": 450,
+    "image": "assets/products/part2.jpeg",
+    "alt": "GPU"
   }
 ]
