@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartItemsElement = document.getElementById("cart-items");
   const productGrid = document.getElementById("product-grid");
 
-  // Fetch products from the JSON file
+  // Fetch products from the products.JSON file
   fetch("products.json")
     .then((response) => response.json())
     .then((fetchedProducts) => {
@@ -34,33 +34,93 @@ document.addEventListener("DOMContentLoaded", function () {
             this.closest(".product-card").getAttribute("data-id");
           const product = products.find((p) => p.id == productId);
 
-          // Check if item already exists in the cart
+          // Check if item already exists in the cart. If it exists, increment the quantity
           if (cart.has(product.id)) {
-            // If it exists, increment the quantity
             const cartItem = cart.get(product.id);
             cartItem.quantity++;
           } else {
-            // If not, add the product with quantity 1
-            cart.set(product.id, { ...product, quantity: 1 });
+            cart.set(product.id, { ...product, quantity: 1 }); // If not, add the product with quantity 1
           }
+          const cartItem = cart.get(product.id);
           updateCart();
+          button.textContent = `${cartItem.quantity} added in Cart`;
+          // updateProductCardButton(this, productId, cartItem.quantity); //Replace Add to Cart button with quantity controls.
         });
       });
     })
     .catch((error) => {
       console.error("Error fetching products:", error);
+      document.getElementById("error-message").textContent =
+        "Failed to load products, please try again later.";
     });
+
+  //Function to replace "Add to Cart" button with quantity controls
+  // function updateProductCardButton(button, productId, quantity) {
+  //   const productCard = button.closest(".product-card");
+
+  //   // Create the quantity controls container
+  //   const quantityControls = document.createElement("div");
+  //   quantityControls.classList.add("quantity-controls");
+
+  //   // Create the decrease button (-)
+  //   const decreaseBtn = document.createElement("button");
+  //   decreaseBtn.textContent = "-";
+  //   decreaseBtn.classList.add("decrease-quantity-btn");
+  //   decreaseBtn.setAttribute("data-id", productId);
+
+  //   // Create the quantity display
+  //   const quantityDisplay = document.createElement("div");
+  //   quantityDisplay.textContent = quantity;
+
+  //   // Create the increase button (+)
+  //   const increaseBtn = document.createElement("button");
+  //   increaseBtn.textContent = "+";
+  //   increaseBtn.classList.add("increase-quantity-btn");
+  //   increaseBtn.setAttribute("data-id", productId);
+
+  //   // Append the controls to the container
+  //   quantityControls.appendChild(decreaseBtn);
+  //   quantityControls.appendChild(quantityDisplay);
+  //   quantityControls.appendChild(increaseBtn);
+
+  //   // **Replace the "Add to Cart" button with the new controls**
+  //   productCard.replaceChild(quantityControls, button);
+
+  //   // **Add event listeners for the new buttons**
+  //   increaseBtn.addEventListener("click", function () {
+  //     const cartItem = cart.get(parseInt(productId));
+  //     cartItem.quantity++;
+  //     quantityDisplay.textContent = cartItem.quantity;
+  //     updateCart(); // **Update cart display**
+  //   });
+
+  //   decreaseBtn.addEventListener("click", function () {
+  //     const cartItem = cart.get(parseInt(productId));
+  //     if (cartItem.quantity > 1) {
+  //       cartItem.quantity--;
+  //     } else {
+  //       cart.delete(parseInt(productId)); // Remove item if quantity is 1
+  //       // **Restore the "Add to Cart" button if the item is removed**
+  //       productCard.replaceChild(button, quantityControls);
+  //       button.textContent = "Add to Cart"; // Reset button text
+  //     }
+  //     quantityDisplay.textContent = cartItem.quantity;
+  //     updateCart(); // **Update cart display**
+  //   });
+  // }
 
   // Open Cart
   cartBtn.addEventListener("click", () => {
     cartElement.classList.add("open");
     updateCart();
   });
+
   // Close Cart
   closeCartBtn.addEventListener("click", () => {
     cartElement.classList.remove("open");
   });
 
+  //update cart count ---> total quantity
   function updateCartCount() {
     const cartCountElement = document.getElementById("cart-count");
     let totalItems = 0;
@@ -70,6 +130,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     cartCountElement.textContent = totalItems;
   }
+
+  //calculate Total of all items in the cart
   function calculateSubtotal() {
     let subtotal = 0;
     cart.forEach((item) => {

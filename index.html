@@ -14,33 +14,144 @@
       href="./assets/computer.png"
       type="image/x-icon"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
+    />
   </head>
   <body>
+    <div class="global-notification">
+      <p>
+        SUMMER SALE FOR ALL PARTS OF COMPUTER AND FREE EXPRESS INTERNATIONAL
+        DELIVERY - OFF 50%! <a href="#">SHOP NOW</a>
+      </p>
+    </div>
     <header>
-      <h2>Computer Parts Store</h2>
-      <nav>
-        <a href="#" class="nav-link">Home</a>
-        <a href="#" class="nav-link">About</a>
-      </nav>
-      <button id="cart-btn">
-        <span class="material-icons">shopping_cart</span>
-        <span id="cart-count">0</span>
-      </button>
+      <div class="header-row">
+        <div class="header-left">
+          <a href="/" class="logo">
+            <img id="logo-img" src="./assets//computer.png" alt="Computer" />
+          </a>
+        </div>
+
+        <div class="header-center" id="sidebar">
+          <nav class="navigation">
+            <ul class="menu-list">
+              <li class="menu-list-item">
+                <a href="/" class="menu-link active"
+                  >Home
+                  <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="menu-dropdown-wrapper">
+                  <ul class="menu-dropdown-content">
+                    <li><a href="#">Home Clean</a></li>
+                    <li><a href="#">Home Collection</a></li>
+                    <li><a href="#">Home Minimal</a></li>
+                    <li><a href="#">Home Modern</a></li>
+                    <li><a href="#">Home Parallax</a></li>
+                    <li><a href="#">Home Strong</a></li>
+                    <li><a href="#">Home Style</a></li>
+                    <li><a href="#">Home Unique</a></li>
+                    <li><a href="#">Home RTL</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="menu-list-item megamenu-wrapper">
+                <a class="menu-link" href="/"
+                  >Shop
+                  <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="menu-dropdown-wrapper">
+                  <div class="menu-dropdown-megamenu">
+                    <div class="megamenu-links">
+                      <div class="megamenu-products">
+                        <h3 class="megamenu-product-title">Shop Style</h3>
+                        <ul class="megamenu-menu-list">
+                          <li><a href="#">Shop Standard</a></li>
+                          <li><a href="#">Shop Full</a></li>
+                          <li><a href="#">Shop Only Categories</a></li>
+                          <li><a href="#">Shop Image Categories</a></li>
+                          <li><a href="#">Shop Sub Categories</a></li>
+                          <li><a href="#">Shop List</a></li>
+                        </ul>
+                      </div>
+                      <div class="megamenu-products">
+                        <h3 class="megamenu-product-title">Shop Loader</h3>
+                        <ul class="megamenu-menu-list">
+                          <li><a href="#">Shop Pagination</a></li>
+                          <li><a href="#">Shop Infinity</a></li>
+                          <li><a href="#">Shop Load More</a></li>
+                          <li><a href="#">Cart Modal</a></li>
+                          <li><a href="#">Cart Drawer</a></li>
+                          <li><a href="#">Cart Page</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="megamenu-single">
+                      <a href="/">
+                        <img src="./assets/kingston-case-shopNow.jpg" alt="" />
+                      </a>
+                      <h3 class="megamenu-single-title">JOIN THE BEST GANG</h3>
+                      <a href="/" class="megamenu-single-button">Shop Now</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="menu-list-item">
+                <a class="menu-link" href="/">Contact</a>
+              </li>
+              <li class="menu-list-item">
+                <a class="menu-link" href="/">About</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="header-right">
+          <div class="header-right-links">
+            <a href="/">
+              <i class="bi bi-person"></i>
+            </a>
+            <button class="search-button">
+              <i class="bi bi-search"></i>
+            </button>
+            <a href="#">
+              <i class="bi bi-heart"></i>
+            </a>
+            <div class="header-cart">
+              <a class="header-cart-link" href="/">
+                <i class="bi bi-bag"></i>
+                <span id="cart-count">0</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <div id="cart" class="cart">
-      <div class="cart-header">
-        <button id="close-cart">&#x2715;</button>
-        <h2>My Cart</h2>
-      </div>
-      <ul id="cart-items"></ul>
-    </div>
-
     <main>
+      <!-- <div class="brand-slider">
+        <h2>Our Brands</h2>
+        <div class="slider">
+          <div class="slider-wrapper">
+            <a href="#"><img src="./assets/ASUS-Game-Offer.jpg" alt="Brand 1" /></a>
+            <a href="#"><img src="./assets/ASUS.jpg" alt="Brand 2" /></a>
+            <a href="#"><img src="./assets/Crucial-Memory.jpg" alt="Brand 3" /></a>
+            <a href="#"><img src="./assets/Bank-Offer-1.jpg" alt="Brand 4" /></a>
+            <a href="#"><img src="./assets/Bank-Offer-1.jpg" alt="Brand 4" /></a>
+          </div>
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+      </div> -->
+    
       <div class="product-grid" id="product-grid">
-        <!-- Products will be dynamically inserted here -->
+        <!-- Products will be added dynamically-->
       </div>
+
+      
     </main>
+    
 
     <script src="js/script.js"></script>
   </body>
