@@ -78,7 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
       cartPanel.contains(event.target) || // Clicking inside the cart panel
       event.target.closest(".increase-quantity-btn") || // Clicking increase quantity
       event.target.closest(".decrease-quantity-btn") || // Clicking decrease quantity
-      event.target.closest(".delete-item-btn"); // Clicking delete item
+      event.target.closest(".delete-item-btn") || //Clicking delete item
+      event.target.closest(".add-to-cart"); // Clicking add to cart
 
     if (!isCartClick) {
       cartPanel.classList.remove("active"); // Close cart if it's an outside click
@@ -88,12 +89,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update cart count
   function updateCartCount() {
     const cartCountElement = document.getElementById("cart-count");
+    const cartCountMobile = document.getElementById("cart-count-mobile");
     let totalItems = 0;
 
     cart.forEach((item) => {
       totalItems += item.quantity; // Update total with quantity
     });
     cartCountElement.textContent = totalItems;
+    cartCountMobile.textContent = totalItems; // Update the cart count on the mobile navigation bar
   }
 
   // Calculate subtotal
@@ -123,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
       emptyCartImg.style.margin = "25px auto";
 
       // Create and add the empty message
-      const emptyMessage = document.createElement("li");
+      const emptyMessage = document.createElement("div");
       emptyMessage.textContent = "SHOPPING CART IS EMPTY!";
       emptyMessage.style.textAlign = "center"; // Center the message
 

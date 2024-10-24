@@ -112,9 +112,26 @@
     </header>
 
     <div class="mobile-header">
+      <!-- Add this new block for the logo (copied from the header-left section) -->
+      <a href="#" class="logo">
+        <img id="logo-img" src="./assets/computer.png" alt="Computer" />
+      </a>
+
       <button class="menu-toggle" aria-label="Toggle menu">
         <i class="bi bi-list"></i>
       </button>
+
+      <!-- Add this new block for the icons (copied from the header-right section) -->
+      <div class="mobile-header-icons">
+        <a href="#"><i class="bi bi-person"></i></a>
+        <button class="search-button"><i class="bi bi-search"></i></button>
+        <a href="#"><i class="bi bi-heart"></i></a>
+        <div class="header-cart">
+          <a class="header-cart-link" href="#"
+            ><i class="bi bi-bag"></i><span id="cart-count-mobile">0</span></a
+          >
+        </div>
+      </div>
       <nav class="mobile-navigation">
         <ul class="mobile-menu-list">
           <li><a href="#" class="menu-link">Home</a></li>

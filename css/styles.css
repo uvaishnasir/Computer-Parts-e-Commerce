@@ -15,8 +15,8 @@ body {
 .cart-panel {
   position: fixed;
   top: 0;
-  right: -300px; /* Hide it off-screen */
-  width: 300px; /* Width of the cart panel */
+  right: -340px; /* Hide it off-screen */
+  width: 340px; /* Width of the cart panel */
   height: 100vh; /* Full height */
   background: white; /* Background color */
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
@@ -50,6 +50,7 @@ body {
 #cart-items li {
   color: #000;
   padding: 12px;
+  border-top: 1px solid #9c9c9c;
 }
 
 .cart-header {
@@ -100,7 +101,6 @@ body {
   font-weight: bold;
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
   font-size: 18px;
   padding: 10px;
   border-top: 1px solid #9c9c9c;
@@ -235,20 +235,6 @@ body {
   cursor: pointer;
 }
 
-/* mobile header   */
-.mobile-header {
-  display: none; /* Hide mobile header by default */
-}
-
-/* Styles for the mobile navigation */
-.mobile-navigation {
-  display: none; /* Initially hide the mobile navigation */
-}
-
-.mobile-navigation.active {
-  display: block; /* Show mobile navigation when active */
-}
-
 header {
   border-bottom: 1px solid #e1e2e7;
   position: sticky;
@@ -354,7 +340,8 @@ header {
   position: relative;
 }
 
-.header-right .header-cart-link #cart-count {
+#cart-count,
+#cart-count-mobile {
   width: 16px;
   height: 16px;
   background-color: #1367ef;
@@ -496,6 +483,7 @@ header .menu-dropdown-content a:hover {
   position: sticky;
   top: 0;
   z-index: 10;
+  height: 40px;
 }
 
 .mobile-header.active {
@@ -506,8 +494,20 @@ header .menu-dropdown-content a:hover {
 }
 
 .mobile-header #logo-img {
-  height: 30px; /* Adjust logo size */
+  height: 25px; /* Adjust logo size */
+  padding: 8px;
 }
+.mobile-header .mobile-header-icons {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.mobile-header .mobile-header-icons a,
+.mobile-header .mobile-header-icons button {
+  margin-left: 5px; /* Adjust spacing between icons */
+}
+
 .mobile-menu-list {
   list-style: none; /* Remove default list styling */
   padding: 0;
@@ -569,7 +569,7 @@ header .menu-dropdown-content a:hover {
   display: none; /* Hide by default */
   background: #fff;
   position: absolute; /* Position under header */
-  top: 60px; /* Adjust based on header height */
+  top: 41px; /* Adjust based on header height */
   width: 100%;
   z-index: 1000;
 }
@@ -593,7 +593,8 @@ header .menu-dropdown-content a:hover {
 /* Responsive adjustments */
 @media (max-width: 705px) {
   header {
-    display: none; /* Hide desktop header */
+    display: none;
+    height: 49px; /* Hide desktop header */
   }
 
   .mobile-header {
@@ -672,7 +673,7 @@ header .menu-dropdown-content a:hover {
   padding-top: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 705px) {
   .footer .footer-content {
     flex-direction: column;
     text-align: center;
