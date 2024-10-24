@@ -83,15 +83,15 @@ document.addEventListener("DOMContentLoaded", function () {
   //   quantityControls.appendChild(quantityDisplay);
   //   quantityControls.appendChild(increaseBtn);
 
-  //   // **Replace the "Add to Cart" button with the new controls**
+  //   // *Replace the "Add to Cart" button with the new controls*
   //   productCard.replaceChild(quantityControls, button);
 
-  //   // **Add event listeners for the new buttons**
+  //   // *Add event listeners for the new buttons*
   //   increaseBtn.addEventListener("click", function () {
   //     const cartItem = cart.get(parseInt(productId));
   //     cartItem.quantity++;
   //     quantityDisplay.textContent = cartItem.quantity;
-  //     updateCart(); // **Update cart display**
+  //     updateCart(); // *Update cart display*
   //   });
 
   //   decreaseBtn.addEventListener("click", function () {
@@ -100,16 +100,26 @@ document.addEventListener("DOMContentLoaded", function () {
   //       cartItem.quantity--;
   //     } else {
   //       cart.delete(parseInt(productId)); // Remove item if quantity is 1
-  //       // **Restore the "Add to Cart" button if the item is removed**
+  //       // *Restore the "Add to Cart" button if the item is removed*
   //       productCard.replaceChild(button, quantityControls);
   //       button.textContent = "Add to Cart"; // Reset button text
   //     }
   //     quantityDisplay.textContent = cartItem.quantity;
-  //     updateCart(); // **Update cart display**
+  //     updateCart(); // *Update cart display*
   //   });
   // }
 
+  document.querySelector(".menu-toggle").addEventListener("click", function () {
+    const nav = document.querySelector(".mobile-navigation");
+    nav.classList.toggle("active");
+    console.log(
+      "Toggle clicked. Navigation active:",
+      nav.classList.contains("active")
+    );
+  });
+
   // Open Cart
+
   cartBtn.addEventListener("click", () => {
     cartElement.classList.add("open");
     updateCart();

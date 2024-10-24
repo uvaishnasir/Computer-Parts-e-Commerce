@@ -27,14 +27,14 @@
       </p>
     </div>
 
-    <header>
+    <header class="header">
       <div class="header-row">
+        <!-- Desktop header content -->
         <div class="header-left">
           <a href="#" class="logo">
             <img id="logo-img" src="./assets/computer.png" alt="Computer" />
           </a>
         </div>
-
         <div class="header-center" id="sidebar">
           <nav class="navigation">
             <ul class="menu-list">
@@ -100,28 +100,45 @@
             </ul>
           </nav>
         </div>
-
         <div class="header-right">
           <div class="header-right-links">
-            <a href="#">
-              <i class="bi bi-person"></i>
-            </a>
-            <button class="search-button">
-              <i class="bi bi-search"></i>
-            </button>
-            <a href="#">
-              <i class="bi bi-heart"></i>
-            </a>
+            <a href="#"><i class="bi bi-person"></i></a>
+            <button class="search-button"><i class="bi bi-search"></i></button>
+            <a href="#"><i class="bi bi-heart"></i></a>
             <div class="header-cart">
-              <a class="header-cart-link" href="#">
-                <i class="bi bi-bag"></i>
-                <span id="cart-count">0</span>
-              </a>
+              <a class="header-cart-link" href="#"
+                ><i class="bi bi-bag"></i><span id="cart-count">0</span></a
+              >
             </div>
           </div>
         </div>
       </div>
     </header>
+
+    <div class="mobile-header">
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="bi bi-list"></i>
+      </button>
+      <nav class="mobile-navigation">
+        <ul class="mobile-menu-list">
+          <li><a href="#" class="menu-link">Home</a></li>
+          <li>
+            <a href="#" class="menu-link">Shop</a>
+            <div class="mobile-dropdown">
+              <ul>
+                <li><a href="#">Shop Standard</a></li>
+                <li><a href="#">Shop Full</a></li>
+                <li><a href="#">Shop Only Categories</a></li>
+                <li><a href="#">Shop Image Categories</a></li>
+                <li><a href="#">Shop List</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="#" class="menu-link">Contact</a></li>
+          <li><a href="#" class="menu-link">About</a></li>
+        </ul>
+      </nav>
+    </div>
 
     <main>
       <div class="offer-container">
@@ -142,7 +159,12 @@
         </div>
         <div class="offer-image">
           <a href="#">
-            <img src="./assets/images/ASUS.jpg" alt="ASUS-Game-Offer" />
+            <img src="./assets/images/ASUS.jpg" alt="ASUS" />
+          </a>
+        </div>
+        <div class="offer-image">
+          <a href="#">
+            <img src="./assets/images/Crucial-Memory.jpg" alt="Loading" />
           </a>
         </div>
       </div>
