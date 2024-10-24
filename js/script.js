@@ -56,24 +56,32 @@ document.addEventListener("DOMContentLoaded", function () {
     nav.classList.toggle("active");
   });
 
-  // Get references to elements
-  const headerCart = document.querySelector(".header-cart");
-  const cartPanel = document.createElement("div");
-  cartPanel.className = "cart-panel"; // Existing class for cart panel
-  document.body.appendChild(cartPanel); // Append cart panel to the body
+  // Get references to element of cat panel and header-cart-link and cart-items ul inside cart-panel
+  const headerCart = document.querySelector(".header-cart-link");
+  const cartPanel = document.querySelector(".cart-panel");
+  const cartItemsList = document.getElementById("cart-items");
+
+  document.getElementById("close-cart").addEventListener("click", function () {
+    cartPanel.classList.remove("active"); // Hide the cart panel
+  });
 
   // Event listener to toggle the cart
   headerCart.addEventListener("click", function () {
     cartPanel.classList.toggle("active"); // Toggle the active class
+    updateCart();
   });
 
-  // Close cart when clicking outside of it
+  // Close cart when clicking outside of it (but exclude actions within the cart like increasing/decreasing/deleting items)
   document.addEventListener("click", function (event) {
-    if (
-      !headerCart.contains(event.target) &&
-      !cartPanel.contains(event.target)
-    ) {
-      cartPanel.classList.remove("active"); // Close cart if clicking outside
+    const isCartClick =
+      headerCart.contains(event.target) || // Clicking on the header cart
+      cartPanel.contains(event.target) || // Clicking inside the cart panel
+      event.target.closest(".increase-quantity-btn") || // Clicking increase quantity
+      event.target.closest(".decrease-quantity-btn") || // Clicking decrease quantity
+      event.target.closest(".delete-item-btn"); // Clicking delete item
+
+    if (!isCartClick) {
+      cartPanel.classList.remove("active"); // Close cart if it's an outside click
     }
   });
 
@@ -100,27 +108,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update cart items to display
   function updateCart() {
     updateCartCount(); // Update the cart count whenever the cart is updated
-    cartPanel.innerHTML = ""; // Clear the cart panel content
 
-    // Create cart header
-    const cartHeader = document.createElement("div");
-    cartHeader.className = "cart-header"; // Add class for styling
-    cartHeader.innerHTML = `
-      <h2>Shopping Cart</h2>
-      <button id="close-cart">X</button>
-    `;
-    cartPanel.appendChild(cartHeader); // Append the header to the cart panel
-
-    // Event listener to close the cart
-    document
-      .getElementById("close-cart")
-      .addEventListener("click", function () {
-        cartPanel.classList.remove("active"); // Hide the cart panel
-      });
+    // Clear the cart items list before updating
+    cartItemsList.innerHTML = "";
 
     // Check if the cart is empty
     if (cart.size === 0) {
-      // Add empty cart image
+      // Create and add the empty cart image only if it doesn't exist
       const emptyCartImg = document.createElement("img");
       emptyCartImg.src = "./assets/emptyCart.png";
       emptyCartImg.alt = "Empty Cart Image";
@@ -128,18 +122,14 @@ document.addEventListener("DOMContentLoaded", function () {
       emptyCartImg.style.display = "block";
       emptyCartImg.style.margin = "25px auto";
 
-      // Create the empty message
+      // Create and add the empty message
       const emptyMessage = document.createElement("li");
       emptyMessage.textContent = "SHOPPING CART IS EMPTY!";
       emptyMessage.style.textAlign = "center"; // Center the message
-      cartPanel.appendChild(emptyCartImg); // Append the image first
-      cartPanel.appendChild(emptyMessage); // Then append the message
-    } else {
-      // Create cart items list
-      const cartItemsList = document.createElement("ul");
-      cartItemsList.id = "cart-items"; // Set ID for styling
-      cartPanel.appendChild(cartItemsList); // Append the list to the cart panel
 
+      cartItemsList.appendChild(emptyCartImg); // Append the image first
+      cartItemsList.appendChild(emptyMessage); // Then append the message
+    } else {
       cart.forEach((item, id) => {
         const li = document.createElement("li");
         li.classList.add("cart-item");
@@ -158,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div>${item.quantity}</div>
           <button class="increase-quantity-btn" data-id="${id}">+</button>
         </div>
-        `;
+      `;
         cartItemsList.appendChild(li); // Append each item to the list
       });
 
@@ -169,16 +159,17 @@ document.addEventListener("DOMContentLoaded", function () {
       subTotalLabel.textContent = "Subtotal:";
       const subTotalValue = document.createElement("span");
       subTotalValue.textContent = "$" + calculateSubtotal();
+
       // Append both spans to the subtotal container
       subTotal.appendChild(subTotalLabel);
       subTotal.appendChild(subTotalValue);
-      cartPanel.appendChild(subTotal);
+      cartItemsList.appendChild(subTotal);
 
       // Checkout button
       const checkoutBtn = document.createElement("button");
       checkoutBtn.textContent = "Checkout";
       checkoutBtn.classList.add("checkout-btn");
-      cartPanel.appendChild(checkoutBtn);
+      cartItemsList.appendChild(checkoutBtn);
     }
 
     // Add event listener to all delete buttons
