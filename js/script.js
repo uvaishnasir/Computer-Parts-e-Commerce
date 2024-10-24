@@ -2,10 +2,7 @@ let products = [];
 let cart = new Map(); // Key: product ID, Value: { product details and quantity }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const cartBtn = document.getElementById("cart-btn");
-  const closeCartBtn = document.getElementById("close-cart");
-  const cartElement = document.getElementById("cart");
-  const cartItemsElement = document.getElementById("cart-items");
+  // Product grid container
   const productGrid = document.getElementById("product-grid");
 
   // Fetch products from the products.JSON file
@@ -26,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         productGrid.appendChild(productCard);
       });
 
-      // Now attach event listeners to dynamically created "Add to Cart" buttons
+      // Attach event listeners to dynamically created "Add to Cart" buttons
       const addToCartButtons = document.querySelectorAll(".add-to-cart");
       addToCartButtons.forEach((button) => {
         button.addEventListener("click", function () {
@@ -34,17 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
             this.closest(".product-card").getAttribute("data-id");
           const product = products.find((p) => p.id == productId);
 
-          // Check if item already exists in the cart. If it exists, increment the quantity
+          // Check if item already exists in the cart
           if (cart.has(product.id)) {
             const cartItem = cart.get(product.id);
             cartItem.quantity++;
           } else {
-            cart.set(product.id, { ...product, quantity: 1 }); // If not, add the product with quantity 1
+            cart.set(product.id, { ...product, quantity: 1 }); // Add new product with quantity 1
           }
           const cartItem = cart.get(product.id);
-          updateCart();
           button.textContent = `${cartItem.quantity} added in Cart`;
-          // updateProductCardButton(this, productId, cartItem.quantity); //Replace Add to Cart button with quantity controls.
+          updateCart();
         });
       });
     })
@@ -54,83 +50,34 @@ document.addEventListener("DOMContentLoaded", function () {
         "Failed to load products, please try again later.";
     });
 
-  //Function to replace "Add to Cart" button with quantity controls
-  // function updateProductCardButton(button, productId, quantity) {
-  //   const productCard = button.closest(".product-card");
-
-  //   // Create the quantity controls container
-  //   const quantityControls = document.createElement("div");
-  //   quantityControls.classList.add("quantity-controls");
-
-  //   // Create the decrease button (-)
-  //   const decreaseBtn = document.createElement("button");
-  //   decreaseBtn.textContent = "-";
-  //   decreaseBtn.classList.add("decrease-quantity-btn");
-  //   decreaseBtn.setAttribute("data-id", productId);
-
-  //   // Create the quantity display
-  //   const quantityDisplay = document.createElement("div");
-  //   quantityDisplay.textContent = quantity;
-
-  //   // Create the increase button (+)
-  //   const increaseBtn = document.createElement("button");
-  //   increaseBtn.textContent = "+";
-  //   increaseBtn.classList.add("increase-quantity-btn");
-  //   increaseBtn.setAttribute("data-id", productId);
-
-  //   // Append the controls to the container
-  //   quantityControls.appendChild(decreaseBtn);
-  //   quantityControls.appendChild(quantityDisplay);
-  //   quantityControls.appendChild(increaseBtn);
-
-  //   // *Replace the "Add to Cart" button with the new controls*
-  //   productCard.replaceChild(quantityControls, button);
-
-  //   // *Add event listeners for the new buttons*
-  //   increaseBtn.addEventListener("click", function () {
-  //     const cartItem = cart.get(parseInt(productId));
-  //     cartItem.quantity++;
-  //     quantityDisplay.textContent = cartItem.quantity;
-  //     updateCart(); // *Update cart display*
-  //   });
-
-  //   decreaseBtn.addEventListener("click", function () {
-  //     const cartItem = cart.get(parseInt(productId));
-  //     if (cartItem.quantity > 1) {
-  //       cartItem.quantity--;
-  //     } else {
-  //       cart.delete(parseInt(productId)); // Remove item if quantity is 1
-  //       // *Restore the "Add to Cart" button if the item is removed*
-  //       productCard.replaceChild(button, quantityControls);
-  //       button.textContent = "Add to Cart"; // Reset button text
-  //     }
-  //     quantityDisplay.textContent = cartItem.quantity;
-  //     updateCart(); // *Update cart display*
-  //   });
-  // }
-
+  // Menu toggle event listener
   document.querySelector(".menu-toggle").addEventListener("click", function () {
     const nav = document.querySelector(".mobile-navigation");
     nav.classList.toggle("active");
-    console.log(
-      "Toggle clicked. Navigation active:",
-      nav.classList.contains("active")
-    );
   });
 
-  // Open Cart
+  // Get references to elements
+  const headerCart = document.querySelector(".header-cart");
+  const cartPanel = document.createElement("div");
+  cartPanel.className = "cart-panel"; // Existing class for cart panel
+  document.body.appendChild(cartPanel); // Append cart panel to the body
 
-  cartBtn.addEventListener("click", () => {
-    cartElement.classList.add("open");
-    updateCart();
+  // Event listener to toggle the cart
+  headerCart.addEventListener("click", function () {
+    cartPanel.classList.toggle("active"); // Toggle the active class
   });
 
-  // Close Cart
-  closeCartBtn.addEventListener("click", () => {
-    cartElement.classList.remove("open");
+  // Close cart when clicking outside of it
+  document.addEventListener("click", function (event) {
+    if (
+      !headerCart.contains(event.target) &&
+      !cartPanel.contains(event.target)
+    ) {
+      cartPanel.classList.remove("active"); // Close cart if clicking outside
+    }
   });
 
-  //update cart count ---> total quantity
+  // Update cart count
   function updateCartCount() {
     const cartCountElement = document.getElementById("cart-count");
     let totalItems = 0;
@@ -141,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cartCountElement.textContent = totalItems;
   }
 
-  //calculate Total of all items in the cart
+  // Calculate subtotal
   function calculateSubtotal() {
     let subtotal = 0;
     cart.forEach((item) => {
@@ -153,7 +100,24 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update cart items to display
   function updateCart() {
     updateCartCount(); // Update the cart count whenever the cart is updated
-    cartItemsElement.innerHTML = "";
+    cartPanel.innerHTML = ""; // Clear the cart panel content
+
+    // Create cart header
+    const cartHeader = document.createElement("div");
+    cartHeader.className = "cart-header"; // Add class for styling
+    cartHeader.innerHTML = `
+      <h2>Shopping Cart</h2>
+      <button id="close-cart">X</button>
+    `;
+    cartPanel.appendChild(cartHeader); // Append the header to the cart panel
+
+    // Event listener to close the cart
+    document
+      .getElementById("close-cart")
+      .addEventListener("click", function () {
+        cartPanel.classList.remove("active"); // Hide the cart panel
+      });
+
     // Check if the cart is empty
     if (cart.size === 0) {
       // Add empty cart image
@@ -163,22 +127,30 @@ document.addEventListener("DOMContentLoaded", function () {
       emptyCartImg.style.width = "120px";
       emptyCartImg.style.display = "block";
       emptyCartImg.style.margin = "25px auto";
+
       // Create the empty message
       const emptyMessage = document.createElement("li");
       emptyMessage.textContent = "SHOPPING CART IS EMPTY!";
-      cartItemsElement.appendChild(emptyCartImg); // Append the image first
-      cartItemsElement.appendChild(emptyMessage); // Then append the message
+      emptyMessage.style.textAlign = "center"; // Center the message
+      cartPanel.appendChild(emptyCartImg); // Append the image first
+      cartPanel.appendChild(emptyMessage); // Then append the message
     } else {
+      // Create cart items list
+      const cartItemsList = document.createElement("ul");
+      cartItemsList.id = "cart-items"; // Set ID for styling
+      cartPanel.appendChild(cartItemsList); // Append the list to the cart panel
+
       cart.forEach((item, id) => {
         const li = document.createElement("li");
         li.classList.add("cart-item");
+
         // Add product image and name
         li.innerHTML = `
         <div class="cart-item-info">
           <img src="${item.image}" alt="${item.alt}" class="cart-item-img" />
           ${item.name} - $${item.price}
           <button class="delete-item-btn" data-id="${id}">
-            <span class="material-icons">delete</span>
+            <i class="bi bi-trash"></i>
           </button>
         </div>
         <div class="quantity-controls">
@@ -187,8 +159,9 @@ document.addEventListener("DOMContentLoaded", function () {
           <button class="increase-quantity-btn" data-id="${id}">+</button>
         </div>
         `;
-        cartItemsElement.appendChild(li);
+        cartItemsList.appendChild(li); // Append each item to the list
       });
+
       // Subtotal container
       const subTotal = document.createElement("div");
       subTotal.classList.add("cart-subtotal");
@@ -199,13 +172,13 @@ document.addEventListener("DOMContentLoaded", function () {
       // Append both spans to the subtotal container
       subTotal.appendChild(subTotalLabel);
       subTotal.appendChild(subTotalValue);
-      cartItemsElement.appendChild(subTotal);
+      cartPanel.appendChild(subTotal);
 
-      //checkout button.
+      // Checkout button
       const checkoutBtn = document.createElement("button");
       checkoutBtn.textContent = "Checkout";
       checkoutBtn.classList.add("checkout-btn");
-      cartItemsElement.appendChild(checkoutBtn);
+      cartPanel.appendChild(checkoutBtn);
     }
 
     // Add event listener to all delete buttons
@@ -213,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
     deleteButtons.forEach((button) => {
       button.addEventListener("click", function () {
         const id = this.getAttribute("data-id");
-        cart.delete(parseInt(id)); // Remove item from cart array
+        cart.delete(parseInt(id)); // Remove item from cart
         updateCart(); // Update the cart display
       });
     });
@@ -228,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCart();
       });
     });
+
     // Add event listeners to decrease quantity buttons
     const decreaseButtons = document.querySelectorAll(".decrease-quantity-btn");
     decreaseButtons.forEach((button) => {
@@ -237,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (cartItem.quantity > 1) {
           cartItem.quantity--;
         } else {
-          cart.delete(parseInt(id)); // Remove item from cart array if quantity is 1
+          cart.delete(parseInt(id)); // Remove item from cart if quantity is 1
         }
         updateCart();
       });
