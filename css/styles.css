@@ -15,17 +15,25 @@ body {
 .cart-panel {
   position: fixed;
   top: 0;
-  right: -340px; /* Hide it off-screen */
-  width: 340px; /* Width of the cart panel */
-  height: 100vh; /* Full height */
-  background: white; /* Background color */
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
-  transition: right 0.3s ease; /* Transition for sliding */
-  z-index: 1000; /* Ensure it appears above other elements */
+  right: -340px;
+  width: 340px;
+  height: 100vh;
+  background: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  z-index: 1000;
 }
 
 .cart-panel.active {
-  right: 0; /* Slide in */
+  right: 0;
+}
+
+/* Mobile view adjustments of cart. */
+@media (max-width: 768px) {
+  .cart-panel.open {
+    width: 100%;
+    right: 0;
+  }
 }
 
 #close-cart {
@@ -262,7 +270,7 @@ header {
 .PC-zone {
   text-decoration: none;
   color: #000;
-  padding-left: 5px;
+  padding: 0px 12px;
   font-weight: 550;
 }
 
@@ -401,7 +409,7 @@ header .menu-dropdown-content a:hover {
   border: 1px solid #dee0ea;
   display: flex;
   column-gap: 50px;
-  padding: 20px;
+  padding: 10px 30px 20px 25px;
 }
 
 .megamenu-wrapper .menu-dropdown-wrapper {
@@ -423,10 +431,10 @@ header .menu-dropdown-content a:hover {
 }
 
 .megamenu-wrapper .megamenu-product-title {
-  margin-left: 25px;
+  margin-left: 20px;
   margin-bottom: 10px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   color: #000;
 }
 
@@ -439,7 +447,7 @@ header .menu-dropdown-content a:hover {
 .megamenu-wrapper .megamenu-menu-list li {
   margin-bottom: 5px;
   color: #000;
-  list-style: none;
+  list-style: circle;
 }
 .megamenu-wrapper .megamenu-menu-list li a {
   text-decoration: none;
@@ -495,13 +503,13 @@ header .menu-dropdown-content a:hover {
 
 .mobile-header #logo-img {
   height: 25px; /* Adjust logo size */
-  padding: 8px;
+  padding: 8px 12px;
 }
 .mobile-header .mobile-header-icons {
-  width: 80%;
+  width: 75%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 .mobile-header .mobile-header-icons a,
 .mobile-header .mobile-header-icons button {

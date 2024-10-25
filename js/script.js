@@ -58,16 +58,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Get references to element of cat panel and header-cart-link and cart-items ul inside cart-panel
   const headerCart = document.querySelector(".header-cart-link");
+  const mobileCart = document.querySelector(".mobile-header-cart");
   const cartPanel = document.querySelector(".cart-panel");
   const cartItemsList = document.getElementById("cart-items");
 
   document.getElementById("close-cart").addEventListener("click", function () {
     cartPanel.classList.remove("active"); // Hide the cart panel
+    cartPanel.classList.remove("open");
   });
 
   // Event listener to toggle the cart
   headerCart.addEventListener("click", function () {
     cartPanel.classList.toggle("active"); // Toggle the active class
+    updateCart();
+  });
+
+  mobileCart.addEventListener("click", function () {
+    cartPanel.classList.add("open"); // Toggle the active class
     updateCart();
   });
 
@@ -110,11 +117,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update cart items to display
   function updateCart() {
-    updateCartCount(); // Update the cart count whenever the cart is updated
-
+    updateCartCount();
     // Clear the cart items list before updating
     cartItemsList.innerHTML = "";
-
     // Check if the cart is empty
     if (cart.size === 0) {
       // Create and add the empty cart image only if it doesn't exist
