@@ -626,7 +626,7 @@ header .menu-dropdown-content a:hover {
 
 .footer .footer-section {
   flex: 1 1 220px;
-  margin: 20px;
+  margin: 10px;
 }
 
 .footer .footer-section h4 {
@@ -678,7 +678,7 @@ header .menu-dropdown-content a:hover {
   text-align: center;
   margin-top: 40px;
   border-top: 1px solid #444;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 @media (max-width: 705px) {
@@ -688,11 +688,11 @@ header .menu-dropdown-content a:hover {
   }
 
   .footer .footer-section {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
   }
 
   .footer-bottom {
-    margin-top: 20px;
+    margin-top: 10px;
   }
 }
 
@@ -721,3 +721,79 @@ header .menu-dropdown-content a:hover {
 .content-heading {
   text-align: center;
 }
+
+
+
+/* General slider styling */
+.slider-section {
+  width: 100%;
+  overflow: hidden;
+}
+
+.product-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+/* Container for all slides, displayed as a horizontal row */
+.slider-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+/* Each slide takes the full width of the container */
+.slide {
+  min-width: 100%; /* Each slide takes full width */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Style for the image and text */
+.slide img {
+  width: 80%; /* Image takes 80% of the slide's width */
+  height: 300px; /* Set a fixed height for uniformity */
+  object-fit: cover; /* Cover ensures the aspect ratio is maintained */
+}
+
+.slide p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Navigation buttons */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  z-index: 1;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Hide text on smaller screens if needed */
+@media (max-width: 768px) {
+  .slide p {
+    font-size: 0.9rem;
+  }
+}
+

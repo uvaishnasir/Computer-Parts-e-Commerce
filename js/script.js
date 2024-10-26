@@ -4,7 +4,6 @@ let cart = new Map(); // Key: product ID, Value: { product details and quantity 
 document.addEventListener("DOMContentLoaded", function () {
   // Product grid container
   const productGrid = document.getElementById("product-grid");
-
   // Fetch products from the products.JSON file
   fetch("products.json")
     .then((response) => response.json())
@@ -216,4 +215,41 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  function autoSlide(sliderClass) {
+    const slider = document.querySelector(`.${sliderClass} .slider-container`);
+    const slideWidth = slider.querySelector(".slide").offsetWidth; // Get the width of one slide
+
+    setInterval(() => {
+      // Scroll by one full slide width
+      slider.scrollLeft += slideWidth;
+
+      // If reached end, reset to start
+      if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
+        slider.scrollLeft = 0;
+      }
+    }, 3000); // Change slide every 3 seconds
+  }
+
+  // Initialize auto-slide for each slider
+  autoSlide("memory-slider");
+  autoSlide("processor-slider");
+  autoSlide("hotdeals-slider");
+
+  // Manual slide control functions
+  function slideLeft(sliderClass) {
+    const slider = document.querySelector(`.${sliderClass} .slider-container`);
+    const slideWidth = slider.querySelector(".slide").offsetWidth;
+    slider.scrollLeft -= slideWidth;
+  }
+
+  function slideRight(sliderClass) {
+    const slider = document.querySelector(`.${sliderClass} .slider-container`);
+    const slideWidth = slider.querySelector(".slide").offsetWidth;
+    slider.scrollLeft += slideWidth;
+  }
+
+  // Expose slide functions globally for button click handlers
+  window.slideLeft = slideLeft;
+  window.slideRight = slideRight;
 });
