@@ -464,7 +464,7 @@ header .menu-dropdown-content a:hover {
 }
 
 .offer-container {
-  margin: 50px auto;
+  margin: 30px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -694,4 +694,30 @@ header .menu-dropdown-content a:hover {
   .footer-bottom {
     margin-top: 20px;
   }
+}
+
+.memory-container {
+  margin: 25px auto;
+  display: flex;
+  flex-direction: row; /* Ensures images are aligned horizontally */
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap; /* Prevents wrapping on mobile devices */
+  width: 100%;
+}
+
+.memory-image {
+  flex: 1; /* Each image takes up equal space */
+  max-width: 45%; /* Sets each image container to 45% of the width */
+  margin: 0 5px; /* Adds space between the images */
+}
+
+.memory-image img {
+  width: 100%; /* Image fills its container fully */
+  height: auto;
+  display: inline-block;
+  cursor: pointer;
+}
+.content-heading {
+  text-align: center;
 }
