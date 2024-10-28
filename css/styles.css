@@ -133,30 +133,47 @@ body {
   background-color: #0654d1;
 }
 
+/* Product slider container */
+.product-slider {
+  overflow: hidden; /* Hide overflow to create sliding effect */
+  width: 100%; /* Full width of the parent container */
+  margin: 0 auto;
+}
+
 /* Product grid container */
 .product-grid {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px;
+  flex-wrap: nowrap;
+  transition: transform 0.5s ease;
+  width: 100%;
 }
 
 /* Product card styling */
 .product-card {
   position: relative;
   background-color: white;
-  margin: 10px;
-  width: 180px;
-  height: 300px; /* Fixed height for consistency */
+  margin: 10px; /* Spacing between cards */
+  width: 180px; /* Fixed width of each card */
+  height: 300px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.5s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 }
+
+/* Slide-in and slide-out animations */
+.slide-out {
+  transform: translateX(-100%); /* Move out of view to the left */
+}
+
+.slide-in {
+  transform: translateX(100%); /* Move in from the right */
+}
+
 /* Discount Badge styling */
 .discount-badge {
   position: absolute;
@@ -168,7 +185,7 @@ body {
   font-size: 12px;
   font-weight: bold;
   border-radius: 10px;
-  z-index: 1;
+  z-index: 10;
 }
 
 /* Image styling */
@@ -242,16 +259,7 @@ body {
   transform: translateY(0); /* Reveal button on hover */
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .product-card {
-    width: 100%;
-    margin: 10px 0;
-  }
-}
-
 /* mobile navigation */
-
 .mobile-navigation {
   display: none; /* Hide mobile navigation by default */
   background: #fff; /* Background color for visibility */

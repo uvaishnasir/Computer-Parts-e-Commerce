@@ -1,41 +1,45 @@
 let products = [];
-let cart = new Map(); // Key: product ID, Value: { product details and quantity }
+const cart = new Map();
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Product grid container
-  const productGrid = document.getElementById("product-grid");
-  // Fetch products from the products.JSON file
+  const productGrid = document.querySelector(".product-grid");
+  const errorMessage = document.getElementById("error-message");
+
+  // Fetch products from the products.json file
   fetch("products.json")
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) throw new Error("Network response was not ok");
+      return response.json();
+    })
     .then((fetchedProducts) => {
-      products = fetchedProducts; // Store fetched products in the global array
+      products = fetchedProducts;
+      if (products.length === 0)
+        throw new Error("No products found in the JSON.");
+
       products.forEach((product) => {
-        // Calculate a random original price between 10% and 50% higher than the discounted price
-        const discountPercentage = Math.random() * (50 - 10) + 10; // Random number between 10 and 50
+        const discountPercentage = Math.random() * (50 - 10) + 10;
         const originalPrice = (
           product.price *
           (1 + discountPercentage / 100)
-        ).toFixed(2); // Original price
+        ).toFixed(2);
         const discountPercentDisplay = Math.round(discountPercentage);
 
-        // Create product card with both prices
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
         productCard.setAttribute("data-id", product.id);
         productCard.innerHTML = `
-                <div class="discount-badge">${discountPercentDisplay}% OFF</div>
-                <img src="${product.image}" alt="${product.alt}" />
-                <h3>${product.name}</h3>
-                <p class="product-price">
-                <span class="discounted-price">$${product.price}</span>
-                  <span class="original-price">$${originalPrice}</span>
-                </p>
-                <button class="add-to-cart">Add to Cart</button>
-            `;
+          <div class="discount-badge">${discountPercentDisplay}% OFF</div>
+          <img src="${product.image}" alt="${product.alt}" />
+          <h3>${product.name}</h3>
+          <p class="product-price">
+            <span class="discounted-price">$${product.price}</span>
+            <span class="original-price">$${originalPrice}</span>
+          </p>
+          <button class="add-to-cart">Add to Cart</button>
+        `;
         productGrid.appendChild(productCard);
       });
 
-      // Existing add-to-cart button functionality
       const addToCartButtons = document.querySelectorAll(".add-to-cart");
       addToCartButtons.forEach((button) => {
         button.addEventListener("click", function () {
@@ -54,82 +58,87 @@ document.addEventListener("DOMContentLoaded", function () {
           updateCart();
         });
       });
+
+      startSliding(productGrid);
     })
     .catch((error) => {
       console.error("Error fetching products:", error);
-      document.getElementById("error-message").textContent =
-        "Failed to load products, please try again later.";
+      if (errorMessage) {
+        errorMessage.textContent =
+          "Failed to load products, please try again later.";
+      }
     });
 
-  let currentIndex = 0;
-  const productCards = document.querySelectorAll(".product-card");
-  function autoProductSlide() {
-    productCards.forEach((card, index) => {
-      card.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
-    });
+  // Start single-item sliding effect for products
+  function startSliding(productGrid) {
+    const productCards = document.querySelectorAll(".product-card");
+    let currentIndex = 0;
 
-    currentIndex = (currentIndex + 1) % productCards.length;
+    setInterval(() => {
+      productCards[currentIndex].classList.add("slide-out");
+      currentIndex = (currentIndex + 1) % productCards.length;
+      productGrid.style.transform = `translateX(-${currentIndex * 190}px)`;
+
+      productCards[currentIndex].classList.add("slide-in");
+      setTimeout(() => {
+        productCards[currentIndex].classList.remove("slide-in");
+      }, 2000);
+
+      if (currentIndex === 0) {
+        productCards.forEach((card) => card.classList.remove("slide-out"));
+      }
+    }, 2000);
   }
 
-  // Adjust the interval to control sliding speed
-  setInterval(autoProductSlide, 2000);
-
-  // Get references to element of cat panel and header-cart-link and cart-items ul inside cart-panel
+  // Cart toggle and update functions
   const headerCart = document.querySelector(".header-cart-link");
   const mobileCart = document.querySelector(".mobile-header-cart");
   const cartPanel = document.querySelector(".cart-panel");
   const cartItemsList = document.getElementById("cart-items");
 
-  // Menu toggle event listener
-  document.querySelector(".menu-toggle").addEventListener("click", function () {
-    const nav = document.querySelector(".mobile-navigation");
-    nav.classList.toggle("active");
+  document.querySelector(".menu-toggle").addEventListener("click", () => {
+    document.querySelector(".mobile-navigation").classList.toggle("active");
   });
-  //close cart in both desktop and mobile view.
-  document.getElementById("close-cart").addEventListener("click", function () {
-    cartPanel.classList.remove("active"); // Hide the cart panel
+
+  document.getElementById("close-cart").addEventListener("click", () => {
+    cartPanel.classList.remove("active");
     cartPanel.classList.remove("open");
   });
-  // Event listener to toggle the cart
-  headerCart.addEventListener("click", function () {
-    cartPanel.classList.toggle("active"); // Toggle the active class
-    updateCart();
-  });
-  // Event listener to toggle the cart in mobile
-  mobileCart.addEventListener("click", function () {
-    cartPanel.classList.add("open"); // Toggle the active class
+
+  headerCart.addEventListener("click", () => {
+    cartPanel.classList.toggle("active");
     updateCart();
   });
 
-  // Close cart when clicking outside of it (but exclude actions within the cart like increasing/decreasing/deleting items)
-  document.addEventListener("click", function (event) {
+  mobileCart.addEventListener("click", () => {
+    cartPanel.classList.add("open");
+    updateCart();
+  });
+
+  document.addEventListener("click", (event) => {
     const isCartClick =
-      headerCart.contains(event.target) || // Clicking on the header cart
-      cartPanel.contains(event.target) || // Clicking inside the cart panel
-      event.target.closest(".increase-quantity-btn") || // Clicking increase quantity
-      event.target.closest(".decrease-quantity-btn") || // Clicking decrease quantity
-      event.target.closest(".delete-item-btn") || //Clicking delete item
-      event.target.closest(".add-to-cart"); // Clicking add to cart
+      headerCart.contains(event.target) ||
+      cartPanel.contains(event.target) ||
+      event.target.closest(".increase-quantity-btn") ||
+      event.target.closest(".decrease-quantity-btn") ||
+      event.target.closest(".delete-item-btn") ||
+      event.target.closest(".add-to-cart");
 
     if (!isCartClick) {
-      cartPanel.classList.remove("active"); // Close cart if it's an outside click
+      cartPanel.classList.remove("active");
     }
   });
 
-  // Update cart count
   function updateCartCount() {
     const cartCountElement = document.getElementById("cart-count");
     const cartCountMobile = document.getElementById("cart-count-mobile");
     let totalItems = 0;
 
-    cart.forEach((item) => {
-      totalItems += item.quantity; // Update total with quantity
-    });
+    cart.forEach((item) => (totalItems += item.quantity));
     cartCountElement.textContent = totalItems;
-    cartCountMobile.textContent = totalItems; // Update the cart count on the mobile navigation bar
+    cartCountMobile.textContent = totalItems;
   }
 
-  // Calculate subtotal
   function calculateSubtotal() {
     let subtotal = 0;
     cart.forEach((item) => {
@@ -138,14 +147,10 @@ document.addEventListener("DOMContentLoaded", function () {
     return subtotal;
   }
 
-  // Update cart items to display
   function updateCart() {
     updateCartCount();
-    // Clear the cart items list before updating
     cartItemsList.innerHTML = "";
-    // Check if the cart is empty
     if (cart.size === 0) {
-      // Create and add the empty cart image only if it doesn't exist
       const emptyCartImg = document.createElement("img");
       emptyCartImg.src = "./assets/emptyCart.png";
       emptyCartImg.alt = "Empty Cart Image";
@@ -153,108 +158,68 @@ document.addEventListener("DOMContentLoaded", function () {
       emptyCartImg.style.display = "block";
       emptyCartImg.style.margin = "25px auto";
 
-      // Create and add the empty message
       const emptyMessage = document.createElement("div");
       emptyMessage.textContent = "SHOPPING CART IS EMPTY!";
-      emptyMessage.style.textAlign = "center"; // Center the message
+      emptyMessage.style.textAlign = "center";
 
-      cartItemsList.appendChild(emptyCartImg); // Append the image first
-      cartItemsList.appendChild(emptyMessage); // Then append the message
+      cartItemsList.appendChild(emptyCartImg);
+      cartItemsList.appendChild(emptyMessage);
     } else {
       cart.forEach((item, id) => {
         const li = document.createElement("li");
         li.classList.add("cart-item");
-
-        // Add product image and name
         li.innerHTML = `
-        <div class="cart-item-info">
-          <img src="${item.image}" alt="${item.alt}" class="cart-item-img" />
-          ${item.name} - $${item.price}
-          <button class="delete-item-btn" data-id="${id}">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
-        <div class="quantity-controls">
-          <button class="decrease-quantity-btn" data-id="${id}">-</button>
-          <div>${item.quantity}</div>
-          <button class="increase-quantity-btn" data-id="${id}">+</button>
-        </div>
-      `;
-        cartItemsList.appendChild(li); // Append each item to the list
+          <div class="cart-item-info">
+            <img src="${item.image}" alt="${item.alt}" class="cart-item-img" />
+            ${item.name} - $${item.price}
+            <button class="delete-item-btn" data-id="${id}">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+          <div class="quantity-controls">
+            <button class="decrease-quantity-btn" data-id="${id}">-</button>
+            <div>${item.quantity}</div>
+            <button class="increase-quantity-btn" data-id="${id}">+</button>
+          </div>
+        `;
+        cartItemsList.appendChild(li);
       });
 
-      // Subtotal container
       const subTotal = document.createElement("div");
       subTotal.classList.add("cart-subtotal");
-      const subTotalLabel = document.createElement("span");
-      subTotalLabel.textContent = "Subtotal:";
-      const subTotalValue = document.createElement("span");
-      subTotalValue.textContent = "$" + calculateSubtotal();
-
-      // Append both spans to the subtotal container
-      subTotal.appendChild(subTotalLabel);
-      subTotal.appendChild(subTotalValue);
+      subTotal.innerHTML = `<span>Subtotal:</span><span>$${calculateSubtotal()}</span>`;
       cartItemsList.appendChild(subTotal);
 
-      // Checkout button
-      const checkoutBtn = document.createElement("button");
-      checkoutBtn.textContent = "Checkout";
-      checkoutBtn.classList.add("checkout-btn");
-      cartItemsList.appendChild(checkoutBtn);
+      updateQuantityEventListeners();
     }
+  }
 
-    // Add event listener to all delete buttons
-    const deleteButtons = document.querySelectorAll(".delete-item-btn");
-    deleteButtons.forEach((button) => {
+  function updateQuantityEventListeners() {
+    document.querySelectorAll(".increase-quantity-btn").forEach((button) => {
       button.addEventListener("click", function () {
-        const id = this.getAttribute("data-id");
-        cart.delete(parseInt(id)); // Remove item from cart
-        updateCart(); // Update the cart display
-      });
-    });
-
-    // Add event listeners to increase quantity buttons
-    const increaseButtons = document.querySelectorAll(".increase-quantity-btn");
-    increaseButtons.forEach((button) => {
-      button.addEventListener("click", function () {
-        const id = this.getAttribute("data-id");
-        const cartItem = cart.get(parseInt(id));
+        const productId = this.getAttribute("data-id");
+        const cartItem = cart.get(productId);
         cartItem.quantity++;
         updateCart();
       });
     });
 
-    // Add event listeners to decrease quantity buttons
-    const decreaseButtons = document.querySelectorAll(".decrease-quantity-btn");
-    decreaseButtons.forEach((button) => {
+    document.querySelectorAll(".decrease-quantity-btn").forEach((button) => {
       button.addEventListener("click", function () {
-        const id = this.getAttribute("data-id");
-        const cartItem = cart.get(parseInt(id));
-        if (cartItem.quantity > 1) {
-          cartItem.quantity--;
-        } else {
-          cart.delete(parseInt(id)); // Remove item from cart if quantity is 1
-        }
+        const productId = this.getAttribute("data-id");
+        const cartItem = cart.get(productId);
+        if (cartItem.quantity > 1) cartItem.quantity--;
+        else cart.delete(productId);
+        updateCart();
+      });
+    });
+
+    document.querySelectorAll(".delete-item-btn").forEach((button) => {
+      button.addEventListener("click", function () {
+        const productId = this.getAttribute("data-id");
+        cart.delete(productId);
         updateCart();
       });
     });
   }
-
-  // Function to automatically slide through the products
-  function autoSlide() {
-    const slider = document.querySelector(".product-slider");
-    const slideWidth = slider.querySelector(".slide").offsetWidth; // Get the width of one slide
-
-    setInterval(() => {
-      // Shift the slider left by one full slide width
-      slider.scrollLeft += slideWidth;
-
-      // If reached the end, reset to the start
-      if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
-        slider.scrollLeft = 0;
-      }
-    }, 2000); // Change slide every 2 seconds
-  }
-  // Initialize auto-slide for the product slider
-  autoSlide();
 });
