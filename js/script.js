@@ -10,19 +10,32 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((fetchedProducts) => {
       products = fetchedProducts; // Store fetched products in the global array
       products.forEach((product) => {
+        // Calculate a random original price between 10% and 50% higher than the discounted price
+        const discountPercentage = Math.random() * (50 - 10) + 10; // Random number between 10 and 50
+        const originalPrice = (
+          product.price *
+          (1 + discountPercentage / 100)
+        ).toFixed(2); // Original price
+        const discountPercentDisplay = Math.round(discountPercentage);
+
+        // Create product card with both prices
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
         productCard.setAttribute("data-id", product.id);
         productCard.innerHTML = `
+                <div class="discount-badge">${discountPercentDisplay}% OFF</div>
                 <img src="${product.image}" alt="${product.alt}" />
                 <h3>${product.name}</h3>
-                <p>Price: $${product.price}</p>
+                <p class="product-price">
+                <span class="discounted-price">$${product.price}</span>
+                  <span class="original-price">$${originalPrice}</span>
+                </p>
                 <button class="add-to-cart">Add to Cart</button>
             `;
         productGrid.appendChild(productCard);
       });
 
-      // Attach event listeners to dynamically created "Add to Cart" buttons
+      // Existing add-to-cart button functionality
       const addToCartButtons = document.querySelectorAll(".add-to-cart");
       addToCartButtons.forEach((button) => {
         button.addEventListener("click", function () {
@@ -30,12 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
             this.closest(".product-card").getAttribute("data-id");
           const product = products.find((p) => p.id == productId);
 
-          // Check if item already exists in the cart
           if (cart.has(product.id)) {
             const cartItem = cart.get(product.id);
             cartItem.quantity++;
           } else {
-            cart.set(product.id, { ...product, quantity: 1 }); // Add new product with quantity 1
+            cart.set(product.id, { ...product, quantity: 1 });
           }
           const cartItem = cart.get(product.id);
           button.textContent = `${cartItem.quantity} added in Cart`;
@@ -49,11 +61,18 @@ document.addEventListener("DOMContentLoaded", function () {
         "Failed to load products, please try again later.";
     });
 
-  // Menu toggle event listener
-  document.querySelector(".menu-toggle").addEventListener("click", function () {
-    const nav = document.querySelector(".mobile-navigation");
-    nav.classList.toggle("active");
-  });
+  let currentIndex = 0;
+  const productCards = document.querySelectorAll(".product-card");
+  function autoProductSlide() {
+    productCards.forEach((card, index) => {
+      card.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
+    });
+
+    currentIndex = (currentIndex + 1) % productCards.length;
+  }
+
+  // Adjust the interval to control sliding speed
+  setInterval(autoProductSlide, 2000);
 
   // Get references to element of cat panel and header-cart-link and cart-items ul inside cart-panel
   const headerCart = document.querySelector(".header-cart-link");
@@ -61,17 +80,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartPanel = document.querySelector(".cart-panel");
   const cartItemsList = document.getElementById("cart-items");
 
+  // Menu toggle event listener
+  document.querySelector(".menu-toggle").addEventListener("click", function () {
+    const nav = document.querySelector(".mobile-navigation");
+    nav.classList.toggle("active");
+  });
+  //close cart in both desktop and mobile view.
   document.getElementById("close-cart").addEventListener("click", function () {
     cartPanel.classList.remove("active"); // Hide the cart panel
     cartPanel.classList.remove("open");
   });
-
   // Event listener to toggle the cart
   headerCart.addEventListener("click", function () {
     cartPanel.classList.toggle("active"); // Toggle the active class
     updateCart();
   });
-
+  // Event listener to toggle the cart in mobile
   mobileCart.addEventListener("click", function () {
     cartPanel.classList.add("open"); // Toggle the active class
     updateCart();
@@ -216,40 +240,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function autoSlide(sliderClass) {
-    const slider = document.querySelector(`.${sliderClass} .slider-container`);
+  // Function to automatically slide through the products
+  function autoSlide() {
+    const slider = document.querySelector(".product-slider");
     const slideWidth = slider.querySelector(".slide").offsetWidth; // Get the width of one slide
 
     setInterval(() => {
-      // Scroll by one full slide width
+      // Shift the slider left by one full slide width
       slider.scrollLeft += slideWidth;
 
-      // If reached end, reset to start
+      // If reached the end, reset to the start
       if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
         slider.scrollLeft = 0;
       }
-    }, 3000); // Change slide every 3 seconds
+    }, 2000); // Change slide every 2 seconds
   }
-
-  // Initialize auto-slide for each slider
-  autoSlide("memory-slider");
-  autoSlide("processor-slider");
-  autoSlide("hotdeals-slider");
-
-  // Manual slide control functions
-  function slideLeft(sliderClass) {
-    const slider = document.querySelector(`.${sliderClass} .slider-container`);
-    const slideWidth = slider.querySelector(".slide").offsetWidth;
-    slider.scrollLeft -= slideWidth;
-  }
-
-  function slideRight(sliderClass) {
-    const slider = document.querySelector(`.${sliderClass} .slider-container`);
-    const slideWidth = slider.querySelector(".slide").offsetWidth;
-    slider.scrollLeft += slideWidth;
-  }
-
-  // Expose slide functions globally for button click handlers
-  window.slideLeft = slideLeft;
-  window.slideRight = slideRight;
+  // Initialize auto-slide for the product slider
+  autoSlide();
 });
