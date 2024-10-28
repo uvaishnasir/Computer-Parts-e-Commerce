@@ -75,19 +75,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
 
     setInterval(() => {
+      // Start slide-out animation for the current card
       productCards[currentIndex].classList.add("slide-out");
+      // Update the index and apply the translation for sliding
       currentIndex = (currentIndex + 1) % productCards.length;
-      productGrid.style.transform = `translateX(-${currentIndex * 190}px)`;
 
+      // Apply the translation for sliding
+      productGrid.style.transform = `translateX(-${currentIndex * 200}px)`;
+
+      // Start slide-in animation for the next card
       productCards[currentIndex].classList.add("slide-in");
-      setTimeout(() => {
-        productCards[currentIndex].classList.remove("slide-in");
-      }, 2000);
-
+      // Remove the slide-in class after the animation completes
+      productCards[currentIndex].classList.remove("slide-in");
+      // Reset slide-out classes when we loop back to the beginning
       if (currentIndex === 0) {
         productCards.forEach((card) => card.classList.remove("slide-out"));
       }
-    }, 2000);
+    }, 2000); // Keep the interval consistent for a smooth effect
   }
 
   // Cart toggle and update functions
@@ -222,4 +226,21 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  //auto-slider of images.
+  function autoSlide() {
+    const slider = document.querySelector(".slider");
+    const slideWidth = slider.querySelector(".slide").offsetWidth; // Get the width of one slide
+    setInterval(() => {
+      // Shift the slider left by one full slide width
+      slider.scrollLeft += slideWidth;
+
+      // If reached the end, reset to the start
+      if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
+        slider.scrollLeft = 0;
+      }
+    }, 2000); // Change slide every 2 seconds
+  }
+  // Initialize auto-slide for the slider
+  autoSlide();
 });

@@ -786,7 +786,7 @@ header .menu-dropdown-content a:hover {
   overflow: hidden;
 }
 
-.product-slider {
+.slider {
   display: flex;
   transition: transform 0.5s ease;
   width: 100%;
@@ -808,7 +808,7 @@ header .menu-dropdown-content a:hover {
 /* Style for the image */
 .slide img {
   width: 90%; /* Image takes 90% of the slide's width */
-  max-height: 450px; /* Maximum height to keep uniformity */
+  max-height: 400px; /* Maximum height to keep uniformity */
   object-fit: contain; /* Maintain aspect ratio without cropping */
 }
 
