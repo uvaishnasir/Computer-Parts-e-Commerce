@@ -1,6 +1,6 @@
 let products = [];
 const cart = new Map();
-
+const buttonReferences = new Map();
 document.addEventListener("DOMContentLoaded", function () {
   const productGrid = document.querySelector(".product-grid");
   const errorMessage = document.getElementById("error-message");
@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             cart.set(product.id, { ...product, quantity: 1 });
           }
+          // Store the button reference
+          buttonReferences.set(product.id, button);
+
           const cartItem = cart.get(product.id);
           button.textContent = `${cartItem.quantity} added in Cart`;
           updateCart();
@@ -70,28 +73,62 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // Start single-item sliding effect for products
+  // function startSliding(productGrid) {
+  //   const productCards = document.querySelectorAll(".product-card");
+  //   let currentIndex = 0;
+
+  //   setInterval(() => {
+  //     // Start slide-out animation for the current card
+  //     productCards[currentIndex].classList.add("slide-out");
+  //     // Update the index and apply the translation for sliding
+  //     currentIndex = (currentIndex + 1) % productCards.length;
+
+  //     // Apply the translation for sliding
+  //     productGrid.style.transform = `translateX(-${currentIndex * 200}px)`;
+
+  //     // Start slide-in animation for the next card
+  //     productCards[currentIndex].classList.add("slide-in");
+  //     // Remove the slide-in class after the animation completes
+  //     productCards[currentIndex].classList.remove("slide-in");
+  //     // Reset slide-out classes when we loop back to the beginning
+  //     if (currentIndex === 0) {
+  //       productCards.forEach((card) => card.classList.remove("slide-out"));
+  //     }
+  //   }, 2000); // Keep the interval consistent for a smooth effect
+  // }
+
   function startSliding(productGrid) {
     const productCards = document.querySelectorAll(".product-card");
     let currentIndex = 0;
+    let slideInterval;
 
-    setInterval(() => {
-      // Start slide-out animation for the current card
+    function slide() {
       productCards[currentIndex].classList.add("slide-out");
-      // Update the index and apply the translation for sliding
       currentIndex = (currentIndex + 1) % productCards.length;
-
-      // Apply the translation for sliding
       productGrid.style.transform = `translateX(-${currentIndex * 200}px)`;
-
-      // Start slide-in animation for the next card
       productCards[currentIndex].classList.add("slide-in");
-      // Remove the slide-in class after the animation completes
       productCards[currentIndex].classList.remove("slide-in");
-      // Reset slide-out classes when we loop back to the beginning
       if (currentIndex === 0) {
         productCards.forEach((card) => card.classList.remove("slide-out"));
       }
-    }, 2000); // Keep the interval consistent for a smooth effect
+    }
+
+    function startSlideShow() {
+      slideInterval = setInterval(slide, 2000);
+    }
+
+    function stopSlideShow() {
+      clearInterval(slideInterval);
+    }
+
+    // Start the slide show initially
+    startSlideShow();
+
+    // Add event listeners for hover
+    productCards.forEach((card) => {
+      card.addEventListener("mouseenter", stopSlideShow); // Pause on hover
+      card.addEventListener("mouseleave", startSlideShow); // Resume on leave
+    });
   }
 
   // Cart toggle and update functions
@@ -187,13 +224,18 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         `;
         cartItemsList.appendChild(li);
+        // Update the button text based on quantity
+        const buttonRef = buttonReferences.get(id);
+        if (buttonRef) {
+          buttonRef.textContent = `${item.quantity} added in Cart`;
+        }
       });
-      //add subTotal div.
+
+      //Add checkout button and subTotal div.
       const subTotal = document.createElement("div");
       subTotal.classList.add("cart-subtotal");
       subTotal.innerHTML = `<span>Subtotal:</span><span>$${calculateSubtotal()}</span>`;
       cartItemsList.appendChild(subTotal);
-      // add checkout button
       const checkoutBtn = document.createElement("button");
       checkoutBtn.textContent = "Checkout";
       checkoutBtn.classList.add("checkout-btn");
@@ -208,6 +250,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const productId = parseInt(this.getAttribute("data-id"), 10);
         const cartItem = cart.get(productId);
         cartItem.quantity++;
+        // Update the button text for the cart item
+        const buttonRef = buttonReferences.get(productId);
+        if (buttonRef) {
+          buttonRef.textContent = `${cartItem.quantity} added in Cart`;
+        }
+
         updateCart();
       });
     });
@@ -216,8 +264,24 @@ document.addEventListener("DOMContentLoaded", function () {
       button.addEventListener("click", function () {
         const productId = parseInt(this.getAttribute("data-id"), 10);
         const cartItem = cart.get(productId);
-        if (cartItem.quantity > 1) cartItem.quantity--;
-        else cart.delete(productId);
+        if (cartItem.quantity > 1) {
+          cartItem.quantity--;
+          // Update the button text for the cart item
+          const buttonRef = buttonReferences.get(productId);
+          if (buttonRef) {
+            buttonRef.textContent = `${cartItem.quantity} added in Cart`;
+          }
+        } else {
+          cart.delete(productId);
+          // Also remove the button reference
+          buttonReferences.delete(productId);
+          // Reset the "Add to Cart" button text when quantity reaches zero
+          const productCard = document.querySelector(
+            `.product-card[data-id="${productId}"]`
+          );
+          const addToCartButton = productCard.querySelector(".add-to-cart");
+          addToCartButton.textContent = "Add to Cart";
+        }
         updateCart();
       });
     });
@@ -226,6 +290,14 @@ document.addEventListener("DOMContentLoaded", function () {
       button.addEventListener("click", function () {
         const productId = parseInt(this.getAttribute("data-id"), 10);
         cart.delete(productId);
+        // Remove button reference
+        buttonReferences.delete(productId);
+        // Reset the "Add to Cart" button text when item is removed
+        const productCard = document.querySelector(
+          `.product-card[data-id="${productId}"]`
+        );
+        const addToCartButton = productCard.querySelector(".add-to-cart");
+        addToCartButton.textContent = "Add to Cart";
         updateCart();
       });
     });
