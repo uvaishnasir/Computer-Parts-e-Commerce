@@ -188,12 +188,16 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         cartItemsList.appendChild(li);
       });
-
+      //add subTotal div.
       const subTotal = document.createElement("div");
       subTotal.classList.add("cart-subtotal");
       subTotal.innerHTML = `<span>Subtotal:</span><span>$${calculateSubtotal()}</span>`;
       cartItemsList.appendChild(subTotal);
-
+      // add checkout button
+      const checkoutBtn = document.createElement("button");
+      checkoutBtn.textContent = "Checkout";
+      checkoutBtn.classList.add("checkout-btn");
+      cartItemsList.appendChild(checkoutBtn);
       updateQuantityEventListeners();
     }
   }
@@ -201,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateQuantityEventListeners() {
     document.querySelectorAll(".increase-quantity-btn").forEach((button) => {
       button.addEventListener("click", function () {
-        const productId = this.getAttribute("data-id");
+        const productId = parseInt(this.getAttribute("data-id"), 10);
         const cartItem = cart.get(productId);
         cartItem.quantity++;
         updateCart();
@@ -210,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".decrease-quantity-btn").forEach((button) => {
       button.addEventListener("click", function () {
-        const productId = this.getAttribute("data-id");
+        const productId = parseInt(this.getAttribute("data-id"), 10);
         const cartItem = cart.get(productId);
         if (cartItem.quantity > 1) cartItem.quantity--;
         else cart.delete(productId);
@@ -220,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".delete-item-btn").forEach((button) => {
       button.addEventListener("click", function () {
-        const productId = this.getAttribute("data-id");
+        const productId = parseInt(this.getAttribute("data-id"), 10);
         cart.delete(productId);
         updateCart();
       });
