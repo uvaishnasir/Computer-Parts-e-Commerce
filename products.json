@@ -82,5 +82,75 @@
     "price": 450,
     "image": "assets/products/part2.jpeg",
     "alt": "GPU"
+  },
+  {
+    "id": 13,
+    "name": "Wi-Fi Adapter",
+    "price": 30,
+    "image": "assets/products/part11.jpg",
+    "alt": "Wi-Fi Adapter"
+  },
+  {
+    "id": 14,
+    "name": "External Hard Drive",
+    "price": 100,
+    "image": "assets/products/part12.jpeg",
+    "alt": "External Hard Drive"
+  },
+  {
+    "id": 15,
+    "name": "USB Hub",
+    "price": 25,
+    "image": "assets/products/part13.jpg",
+    "alt": "USB Hub"
+  },
+  {
+    "id": 16,
+    "name": "PC Case",
+    "price": 80,
+    "image": "assets/products/part14.jpeg",
+    "alt": "PC Case"
+  },
+  {
+    "id": 17,
+    "name": "Thermal Paste",
+    "price": 10,
+    "image": "assets/products/part15.jpg",
+    "alt": "Thermal Paste"
+  },
+  {
+    "id": 18,
+    "name": "Sound Card",
+    "price": 50,
+    "image": "assets/products/part16.png",
+    "alt": "Sound Card"
+  },
+  {
+    "id": 19,
+    "name": "Wireless Gaming Controller",
+    "price": 60,
+    "image": "assets/products/part17.jpg",
+    "alt": "Gaming Controller"
+  },
+  {
+    "id": 20,
+    "name": "Gaming Headset",
+    "price": 70,
+    "image": "assets/products/part18.png",
+    "alt": "Gaming Headset"
+  },
+  {
+    "id": 21,
+    "name": "Webcam",
+    "price": 40,
+    "image": "assets/products/part19.jpg",
+    "alt": "Webcam"
+  },
+  {
+    "id": 22,
+    "name": "Bluetooth Adapter",
+    "price": 20,
+    "image": "assets/products/part20.jpeg",
+    "alt": "Bluetooth Adapter"
   }
 ]
