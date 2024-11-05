@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         productCard.setAttribute("data-id", product.id);
         // Wrap the inner HTML in an anchor tag
         productCard.innerHTML = `
-          <a target="_blank" href="/product.html" class="product-card-link">
+          <a target="_blank" href="/Computer-Parts-e-Commerce/product.html" class="product-card-link">
             <div class="discount-badge">${discountPercentDisplay}% OFF</div>
             <img src="${product.image}" alt="${product.alt}" />
             <h3>${product.name}</h3>
