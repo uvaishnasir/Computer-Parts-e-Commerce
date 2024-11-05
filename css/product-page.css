@@ -1,0 +1,227 @@
+/* Ensure product page spans the full width */
+.product-page {
+  width: 100%; /* Ensures the main product page spans full width */
+  box-sizing: border-box;
+}
+
+.product-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1300px;
+  margin: 25px;
+}
+
+/* Product image section and actions styling */
+.product-image-section {
+  width: 30%; /* Adjust as needed to balance width with details section */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-image {
+  width: 100%; /* Full width of the container */
+  max-width: 400px; /* Optional: Add max width to limit image size */
+}
+
+/* Action Buttons */
+.product-actions {
+  display: flex;
+  width: 90%;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.buy-now-btn,
+.add-to-cart-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* "Buy Now" Button Styles */
+.buy-now-btn {
+  background-color: #fb641b;
+  color: #fff;
+}
+
+.buy-now-btn:hover {
+  background-color: #c75015;
+}
+
+/* "Add to Cart" Button Styles */
+.add-to-cart-btn {
+  background-color: #ff9f00;
+  color: #fff;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #cc7e00;
+}
+
+/* details sections */
+.product-details-section {
+  width: 70%; /* Ensure the section takes the full width */
+  padding: 20px; /* Adjust padding as needed */
+  box-sizing: border-box; /* Include padding in the total width calculation */
+}
+
+.product-price-container {
+  margin-top: 10px; /* Space between the title and price */
+}
+
+.product-title {
+  font-size: 25px;
+  color: #212121;
+  margin: 0 0 8px;
+  font-weight: 400;
+}
+
+.product-price {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 28px;
+  color: #388e3c;
+  font-weight: bold;
+  margin: 8px 0 16px;
+}
+
+.discounted-price {
+  color: #000;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 22px;
+}
+.discount {
+  font-size: 12px;
+  font-weight: 500;
+  color: #388e3c;
+}
+.original-price {
+  text-decoration: line-through;
+  color: #757575;
+  font-size: 16px;
+  vertical-align: bottom;
+}
+
+.product-description {
+  font-size: 16px;
+  color: #757575;
+  margin-bottom: 16px;
+}
+
+/* ratings section */
+.rating-section {
+  font-size: 14px;
+  color: #333;
+}
+
+.rating-stars {
+  color: #ff9800; /* Star color */
+  font-size: 16px;
+  margin-right: 4px;
+}
+
+.rating-score {
+  font-weight: bold;
+  color: #333;
+  margin-right: 4px;
+}
+
+.rating-details {
+  color: #555; /* Slightly lighter color for details */
+  font-size: 13px;
+}
+/* specifications-table */
+.specifications-title {
+  margin-top: 20px; /* Space above the specifications title */
+  font-size: 18px; /* Font size for the title */
+  font-weight: bold; /* Make title bold */
+}
+
+.specifications-table {
+  width: 70%; /* Full width table */
+  border-collapse: collapse; /* Remove gaps between table cells */
+  margin-top: 10px; /* Space above the table */
+}
+
+.specifications-table td {
+  padding: 8px 0; /* Padding for cells */
+  vertical-align: top; /* Align text to the top */
+}
+
+.spec-name {
+  color: grey; /* Grey color for specification names */
+  text-align: left; /* Left-align the specification name */
+  width: 50%; /* Width for left column */
+  padding-right: 10px; /* Space between name and value */
+}
+
+.spec-value {
+  color: black; /* Black color for specification values */
+  text-align: left; /* Right-align the specification value */
+  width: 50%; /* Width for right column */
+}
+
+/* offers section styles */
+.offers-section {
+  padding: 16px; /* Padding inside the section */
+  margin-top: 20px; /* Space above the section */
+  background-color: #f9f9f9; /* Light background color */
+}
+
+.offers-title {
+  font-size: 18px; /* Size of the title */
+  font-weight: bold; /* Make title bold */
+  color: #333; /* Dark color for title */
+  margin-bottom: 10px; /* Space below title */
+}
+
+.offers-list {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
+
+.offer-item {
+  display: flex; /* Flex layout to align icon and text */
+  align-items: center; /* Vertically align icon and text */
+  margin-bottom: 8px; /* Space between offers */
+  color: #333; /* Dark text color */
+  font-size: 14px; /* Font size for offer text */
+}
+
+.offer-icon {
+  font-size: 18px; /* Size for icon */
+  color: #ff5722; /* Orange color for icon */
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.offer-terms {
+  color: #007bff; /* Blue color for T&C */
+  font-size: 12px; /* Smaller font size for T&C */
+  margin-left: 4px; /* Space between offer text and T&C */
+  cursor: pointer; /* Pointer cursor for T&C */
+}
+
+.offer-terms:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.view-more {
+  color: #007bff; /* Blue color for 'View more' */
+  font-size: 14px; /* Font size for 'View more' */
+  cursor: pointer; /* Pointer cursor for 'View more' */
+  margin-top: 10px; /* Space above 'View more' */
+}
+
+.view-more:hover {
+  text-decoration: underline; /* Underline on hover */
+}

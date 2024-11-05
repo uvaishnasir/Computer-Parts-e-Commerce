@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Page</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="shortcut icon" href="../assets/icon.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header (reused from index.html) -->
+    <div class="global-notification">
+      <p>
+        SUMMER SALE FOR ALL PARTS OF COMPUTER AND FREE EXPRESS INTERNATIONAL
+        DELIVERY - OFF 50%! <a href="#">SHOP NOW</a>
+      </p>
+    </div>
+
+    <header class="header">
+      <div class="header-row">
+        <div class="header-left">
+          <a href="#" class="logo">
+            <img id="logo-img" src="../assets/logo.png" alt="Computer" />
+          </a>
+          <a class="PC-zone" href="#">PC Zone</a>
+        </div>
+        <div class="header-center" id="sidebar">
+          <nav class="navigation">
+            <ul class="menu-list">
+              <li class="menu-list-item">
+                <a href="#" class="menu-link active"
+                  >Home
+                  <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="menu-dropdown-wrapper">
+                  <ul class="menu-dropdown-content">
+                    <li><a href="#">PC Deals</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">PC Upgrades</a></li>
+                    <li><a href="#">PC Accessories </a></li>
+                    <li><a href="#">PC Gaming Gear</a></li>
+                    <li><a href="#">Build Your PC</a></li>
+                    <li><a href="#">Gaming Hub</a></li>
+                    <li><a href="#">Tech Trends</a></li>
+                    <li><a href="#">Workstation Essentials</a></li>
+                    <li><a href="#">High-Performance Zone</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="menu-list-item megamenu-wrapper">
+                <a class="menu-link" href="#"
+                  >Shop
+                  <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="menu-dropdown-wrapper">
+                  <div class="menu-dropdown-megamenu">
+                    <div class="megamenu-links">
+                      <div class="megamenu-products">
+                        <h3 class="megamenu-product-title">Shop by Category</h3>
+                        <ul class="megamenu-menu-list">
+                          <li><a href="#">All Components</a></li>
+                          <li><a href="#">Processor</a></li>
+                          <li><a href="#">Motherboards</a></li>
+                          <li><a href="#">Graphics Cards</a></li>
+                          <li><a href="#">Storage Devices</a></li>
+                          <li><a href="#">Cooling & Power</a></li>
+                        </ul>
+                      </div>
+                      <div class="megamenu-products">
+                        <h3 class="megamenu-product-title">Browse Options</h3>
+                        <ul class="megamenu-menu-list">
+                          <li><a href="#">Popular Products</a></li>
+                          <li><a href="#">New Arrivals</a></li>
+                          <li><a href="#">Best Deals</a></li>
+                          <li><a href="#">Quick View</a></li>
+                          <li><a href="#">Cart Sidebar</a></li>
+                          <li><a href="#">Order Summary</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="menu-list-item">
+                <a class="menu-link" href="#">Contact</a>
+              </li>
+              <li class="menu-list-item">
+                <a class="menu-link" href="#">About</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header-right">
+          <div class="header-right-links">
+            <a href="#"><i class="bi bi-person"></i></a>
+            <button class="search-button"><i class="bi bi-search"></i></button>
+            <a href="#"><i class="bi bi-heart"></i></a>
+            <div class="header-cart">
+              <a class="header-cart-link" href="#"
+                ><i class="bi bi-bag"></i><span id="cart-count">0</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-header">
+      <!-- Add this new block for the logo (copied from the header-left section) -->
+      <a href="#" class="logo">
+        <img id="logo-img" src="../assets/logo.png" alt="Computer" />
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <!-- Add this new block for the icons (copied from the header-right section) -->
+      <div class="mobile-header-icons">
+        <a href="#"><i class="bi bi-person"></i></a>
+        <button class="search-button"><i class="bi bi-search"></i></button>
+        <a href="#"><i class="bi bi-heart"></i></a>
+        <div class="header-cart">
+          <a class="mobile-header-cart" href="#"
+            ><i class="bi bi-bag"></i><span id="cart-count-mobile">0</span></a
+          >
+        </div>
+      </div>
+      <nav class="mobile-navigation">
+        <ul class="mobile-menu-list">
+          <li><a href="#" class="menu-link">Home</a></li>
+          <li>
+            <a href="#" class="menu-link">Shop</a>
+            <div class="mobile-dropdown">
+              <ul>
+                <li><a href="#">Shop Standard</a></li>
+                <li><a href="#">Shop Full</a></li>
+                <li><a href="#">Shop Only Categories</a></li>
+                <li><a href="#">Shop Image Categories</a></li>
+                <li><a href="#">Shop List</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="#" class="menu-link">Contact</a></li>
+          <li><a href="#" class="menu-link">About</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h2>My Cart</h2>
+        <button id="close-cart">X</button>
+      </div>
+      <ul id="cart-items">
+        <!-- Cart items will be added dynamically-->
+      </ul>
+    </div>
+
+    <!-- Product Page Content -->
+    <main class="product-page">
+      <div class="product-container">
+        <!-- Product Image Section -->
+        <div class="product-image-section">
+          <img
+            src="../assets/products/part5.png"
+            alt="Gaming Motherboard"
+            class="product-image"
+          />
+          <!-- Action Buttons below the image -->
+          <div class="product-actions">
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="product-details-section">
+          <h1 class="product-title">Gaming Motherboard</h1>
+          <div class="rating-section">
+            <span class="rating-stars">★ ★ ★ ☆ ☆</span>
+            <span class="rating-score">3.3</span>
+            <span class="rating-details">(40 Ratings & 6 Reviews)</span>
+          </div>
+          <div class="product-price-container">
+            <p class="product-price">
+              <span class="discounted-price">₹200</span>
+              <span class="original-price">₹222</span>
+              <span class="discount">10% OFF</span>
+            </p>
+          </div>
+          <p class="product-description">
+            This high-performance gaming motherboard is designed to handle
+            demanding applications with ease, featuring advanced cooling,
+            high-speed connectivity, and robust durability to enhance your
+            gaming experience.
+          </p>
+          <!-- offers section -->
+          <div class="offers-section">
+            <h2 class="offers-title">Available Offers</h2>
+            <ul class="offers-list">
+              <li class="offer-item">
+                <span class="offer-icon">💳</span> Bank Offer: 5% Unlimited
+                Cashback on Flipkart Axis Bank Credit Card
+                <span class="offer-terms">T&C</span>
+              </li>
+              <li class="offer-item">
+                <span class="offer-icon">💳</span> Bank Offer: Flat ₹1,200 off
+                on HDFC Bank Credit Card EMI Txns on 6 and 9 months tenure, Min.
+                Txn Value: ₹15,000 <span class="offer-terms">T&C</span>
+              </li>
+              <li class="offer-item">
+                <span class="offer-icon">💳</span> Bank Offer: Flat ₹1,500 off
+                on HDFC Bank Credit Card EMI Txns on 12 months tenure, Min. Txn
+                Value: ₹15,000 <span class="offer-terms">T&C</span>
+              </li>
+              <li class="offer-item">
+                <span class="offer-icon">💳</span> Bank Offer: 10% off up to
+                ₹1750 on HDFC Bank Credit Card EMI Txns on 24 months tenure,
+                Min. Txn Value: ₹15,000 <span class="offer-terms">T&C</span>
+              </li>
+            </ul>
+            <div class="view-more">View 5 more offers</div>
+          </div>
+
+          <h2 class="specifications-title">Specifications</h2>
+          <table class="specifications-table">
+            <tr>
+              <td class="spec-name">Socket Type</td>
+              <td class="spec-value">LGA 1200</td>
+            </tr>
+            <tr>
+              <td class="spec-name">Chipset</td>
+              <td class="spec-value">Intel Z490</td>
+            </tr>
+            <tr>
+              <td class="spec-name">Form Factor</td>
+              <td class="spec-value">ATX</td>
+            </tr>
+            <tr>
+              <td class="spec-name">RAM Slots</td>
+              <td class="spec-value">4 x DDR4</td>
+            </tr>
+            <tr>
+              <td class="spec-name">Max RAM</td>
+              <td class="spec-value">128GB</td>
+            </tr>
+            <tr>
+              <td class="spec-name">PCIe Slots</td>
+              <td class="spec-value">3 x PCIe 3.0</td>
+            </tr>
+            <tr>
+              <td class="spec-name">Storage Interfaces</td>
+              <td class="spec-value">6 x SATA 6Gb/s, 2 x M.2</td>
+            </tr>
+            <tr>
+              <td class="spec-name">USB Ports</td>
+              <td class="spec-value">6 x USB 3.2, 2 x USB 2.0</td>
+            </tr>
+            <tr>
+              <td class="spec-name">LAN</td>
+              <td class="spec-value">1 x Gigabit Ethernet</td>
+            </tr>
+            <tr>
+              <td class="spec-name">Audio</td>
+              <td class="spec-value">7.1 Channel HD Audio</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer (reused from index.html) -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h4>About Us</h4>
+          <p>
+            We provide top-quality computer parts with reliable support,
+            ensuring you get the best hardware for your needs.
+          </p>
+        </div>
+        <div class="footer-section links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-section contact">
+          <h4>Contact Us</h4>
+          <p><i class="bi bi-telephone-fill"></i> +91 123 456 7890</p>
+          <p><i class="bi bi-envelope-fill"></i> support@computershop.com</p>
+          <p>
+            <i class="bi bi-geo-alt-fill"></i> 123 Tech Street, New Delhi, India
+          </p>
+        </div>
+        <div class="footer-section social">
+          <h4>Follow Us</h4>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2024 PC Zone | All Rights Reserved <br />Designed with ❤️ by
+        Uvaish Nasir
+      </div>
+    </footer>
+
+    <!-- External CSS for product page styling -->
+    <link rel="stylesheet" href="../css/product-page.css" />
+    <!-- This is for separate styling for product page only -->
+  </body>
+</html>

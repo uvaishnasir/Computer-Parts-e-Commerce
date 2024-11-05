@@ -27,14 +27,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
         productCard.setAttribute("data-id", product.id);
+        // Wrap the inner HTML in an anchor tag
         productCard.innerHTML = `
-          <div class="discount-badge">${discountPercentDisplay}% OFF</div>
-          <img src="${product.image}" alt="${product.alt}" />
-          <h3>${product.name}</h3>
-          <p class="product-price">
-            <span class="discounted-price">$${product.price}</span>
-            <span class="original-price">$${originalPrice}</span>
-          </p>
+          <a target="_blank" href="/pages/product.html" class="product-card-link">
+            <div class="discount-badge">${discountPercentDisplay}% OFF</div>
+            <img src="${product.image}" alt="${product.alt}" />
+            <h3>${product.name}</h3>
+            <p class="product-price">
+              <span class="discounted-price">$${product.price}</span>
+              <span class="original-price">$${originalPrice}</span>
+            </p>
+          </a>
           <button class="add-to-cart">Add to Cart</button>
         `;
         productGrid.appendChild(productCard);
@@ -110,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function startSliding(productGrid) {
     const productCards = document.querySelectorAll(".product-card");
-    const numVisibleCards = 6; // Adjust this based on the number of visible cards you want
     let currentIndex = 0;
     let slideInterval;
 
