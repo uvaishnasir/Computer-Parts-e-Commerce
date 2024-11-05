@@ -1,4 +1,4 @@
-# Computer Parts Store
+ # PC ZONE
 
 A simple e-commerce website built with pure HTML, CSS, and JavaScript to showcase and manage computer parts.
 
