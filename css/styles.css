@@ -138,6 +138,28 @@ body {
   overflow: hidden; /* Hide overflow to create sliding effect */
   width: 100%; /* Full width of the parent container */
   margin: 0 auto;
+  position: relative; /* Needed for absolute positioning of buttons */
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5em;
+  z-index: 5;
+}
+
+.left-button {
+  left: 10px;
+}
+
+.right-button {
+  right: 10px;
 }
 
 /* Product grid container */
@@ -152,8 +174,8 @@ body {
 .product-card {
   position: relative;
   background-color: white;
-  margin: 10px; /* Spacing between cards */
-  width: 180px; /* Fixed width of each card */
+  margin: 12px; /* Spacing between cards */
+  width: 200px; /* Fixed width of each card */
   height: 300px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -784,6 +806,34 @@ header .menu-dropdown-content a:hover {
 .slider-section {
   width: 100%;
   overflow: hidden;
+  position: relative;
+}
+
+/* Hot Deals Slider Button Styling */
+.hot-deals-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+
+.hot-deals-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.hot-deals-left {
+  left: 10px;
+}
+
+.hot-deals-right {
+  right: 10px;
 }
 
 .slider {

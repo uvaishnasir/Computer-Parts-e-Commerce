@@ -72,44 +72,67 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-  // Start single-item sliding effect for products
   // function startSliding(productGrid) {
   //   const productCards = document.querySelectorAll(".product-card");
   //   let currentIndex = 0;
+  //   let slideInterval;
 
-  //   setInterval(() => {
-  //     // Start slide-out animation for the current card
+  //   function slide() {
   //     productCards[currentIndex].classList.add("slide-out");
-  //     // Update the index and apply the translation for sliding
   //     currentIndex = (currentIndex + 1) % productCards.length;
-
-  //     // Apply the translation for sliding
   //     productGrid.style.transform = `translateX(-${currentIndex * 200}px)`;
-
-  //     // Start slide-in animation for the next card
   //     productCards[currentIndex].classList.add("slide-in");
-  //     // Remove the slide-in class after the animation completes
   //     productCards[currentIndex].classList.remove("slide-in");
-  //     // Reset slide-out classes when we loop back to the beginning
-  //     if (currentIndex === 0) {
+  //     if (currentIndex === 6) {
   //       productCards.forEach((card) => card.classList.remove("slide-out"));
   //     }
-  //   }, 2000); // Keep the interval consistent for a smooth effect
+  //   }
+
+  //   function startSlideShow() {
+  //     slideInterval = setInterval(slide, 2000);
+  //   }
+
+  //   function stopSlideShow() {
+  //     clearInterval(slideInterval);
+  //   }
+
+  //   // Start the slide show initially
+  //   startSlideShow();
+
+  //   // Add event listeners for hover
+  //   productCards.forEach((card) => {
+  //     card.addEventListener("mouseenter", stopSlideShow); // Pause on hover
+  //     card.addEventListener("mouseleave", startSlideShow); // Resume on leave
+  //   });
   // }
+
+  // Cart toggle and update functions
 
   function startSliding(productGrid) {
     const productCards = document.querySelectorAll(".product-card");
+    const numVisibleCards = 6; // Adjust this based on the number of visible cards you want
     let currentIndex = 0;
     let slideInterval;
 
+    // Duplicate the product cards to create a seamless loop
+    productCards.forEach((card) => {
+      const clone = card.cloneNode(true);
+      productGrid.appendChild(clone);
+    });
+
     function slide() {
-      productCards[currentIndex].classList.add("slide-out");
-      currentIndex = (currentIndex + 1) % productCards.length;
-      productGrid.style.transform = `translateX(-${currentIndex * 200}px)`;
-      productCards[currentIndex].classList.add("slide-in");
-      productCards[currentIndex].classList.remove("slide-in");
-      if (currentIndex === 0) {
-        productCards.forEach((card) => card.classList.remove("slide-out"));
+      productGrid.style.transition = "transform 0.5s ease-in-out";
+      productGrid.style.transform = `translateX(-${currentIndex * 224}px)`;
+
+      currentIndex++;
+
+      // When we reach the end of the original set of cards, reset back to the start
+      if (currentIndex >= productCards.length) {
+        setTimeout(() => {
+          productGrid.style.transition = "none";
+          productGrid.style.transform = "translateX(0)";
+          currentIndex = 0;
+        }, 2500); // Wait for the transition to finish before resetting
       }
     }
 
@@ -121,6 +144,24 @@ document.addEventListener("DOMContentLoaded", function () {
       clearInterval(slideInterval);
     }
 
+    // Manual slide control
+    document.querySelector(".left-button").addEventListener("click", () => {
+      stopSlideShow(); // Pause automatic sliding on manual interaction
+      currentIndex =
+        (currentIndex - 1 + productCards.length) % productCards.length;
+      productGrid.style.transition = "transform 0.5s ease-in-out";
+      productGrid.style.transform = `translateX(-${currentIndex * 224}px)`;
+      startSlideShow();
+    });
+
+    document.querySelector(".right-button").addEventListener("click", () => {
+      stopSlideShow(); // Pause automatic sliding on manual interaction
+      currentIndex = (currentIndex + 1) % productCards.length;
+      productGrid.style.transition = "transform 0.5s ease-in-out";
+      productGrid.style.transform = `translateX(-${currentIndex * 224}px)`;
+      startSlideShow();
+    });
+
     // Start the slide show initially
     startSlideShow();
 
@@ -131,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Cart toggle and update functions
   const headerCart = document.querySelector(".header-cart-link");
   const mobileCart = document.querySelector(".mobile-header-cart");
   const cartPanel = document.querySelector(".cart-panel");
@@ -306,17 +346,54 @@ document.addEventListener("DOMContentLoaded", function () {
   //auto-slider of images.
   function autoSlide() {
     const slider = document.querySelector(".slider");
-    const slideWidth = slider.querySelector(".slide").offsetWidth; // Get the width of one slide
-    setInterval(() => {
-      // Shift the slider left by one full slide width
-      slider.scrollLeft += slideWidth;
+    const slideWidth = slider.querySelector(".slide").offsetWidth;
+    let slideInterval;
 
-      // If reached the end, reset to the start
+    function startSlideShow() {
+      slideInterval = setInterval(() => {
+        slider.scrollLeft += slideWidth;
+        // Wrap back to the beginning if it reaches the end
+        if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
+          slider.scrollLeft = 0;
+        }
+      }, 2000);
+    }
+
+    function stopSlideShow() {
+      clearInterval(slideInterval);
+    }
+
+    function slideLeft() {
+      stopSlideShow();
+      if (slider.scrollLeft <= 0) {
+        slider.scrollLeft = slider.scrollWidth - slider.clientWidth;
+      } else {
+        slider.scrollLeft -= slideWidth;
+      }
+      startSlideShow();
+    }
+
+    function slideRight() {
+      stopSlideShow();
+      slider.scrollLeft += slideWidth;
       if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
         slider.scrollLeft = 0;
       }
-    }, 2000); // Change slide every 2 seconds
+      startSlideShow();
+    }
+
+    // Event listeners for the buttons
+    document
+      .querySelector(".hot-deals-left")
+      .addEventListener("click", slideLeft);
+    document
+      .querySelector(".hot-deals-right")
+      .addEventListener("click", slideRight);
+
+    // Start the auto-slide
+    startSlideShow();
   }
-  // Initialize auto-slide for the slider
+
+  // Initialize the slider functionality
   autoSlide();
 });
