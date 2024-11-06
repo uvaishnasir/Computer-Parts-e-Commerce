@@ -72,6 +72,7 @@
 .product-details-section {
   width: 70%; /* Ensure the section takes the full width */
   padding: 20px; /* Adjust padding as needed */
+  margin-left: 10px;
   box-sizing: border-box; /* Include padding in the total width calculation */
 }
 
@@ -156,7 +157,7 @@
 }
 
 .specifications-table td {
-  padding: 8px 0; /* Padding for cells */
+  padding: 8px; /* Padding for cells */
   vertical-align: top; /* Align text to the top */
 }
 
@@ -227,4 +228,179 @@
 
 .view-more:hover {
   text-decoration: underline; /* Underline on hover */
+}
+
+/* Section Styling */
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 20px;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+/* Review Styling */
+.reviews p {
+  margin-left: 10px;
+  color: #666;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+td {
+  color: #555;
+}
+
+/* Responsive adjustments for mobile view */
+@media (max-width: 768px) {
+  /* Product Container */
+  .product-container {
+    flex-direction: column; /* Stack sections vertically */
+    padding: 0px; /* Adjust padding for smaller screens */
+    margin: 0px;
+  }
+
+  /* Product Image Section */
+  .product-image-section {
+    width: 100%; /* Full width on mobile */
+    height: auto; /* Let height adjust with content */
+    position: relative; /* Remove sticky positioning */
+    top: 0; /* Reset top position */
+    padding: 10px;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space below image */
+  }
+
+  /* Product Details Section */
+  .product-details-section {
+    width: 100%; /* Full width on mobile */
+    padding: 5px; /* Reduce padding */
+    margin: 0px;
+  }
+
+  /* Product Title */
+  .product-title {
+    font-size: 20px; /* Slightly smaller title */
+  }
+
+  /* Price and Description */
+  .product-price {
+    font-size: 24px; /* Reduce font size */
+  }
+
+  .product-description {
+    font-size: 14px; /* Slightly smaller text */
+  }
+
+  /* Specifications Table */
+  .specifications-table {
+    width: 100%; /* Full width on mobile */
+  }
+
+  .specifications-table td {
+    font-size: 14px; /* Smaller font for readability */
+  }
+
+  /* Offers Section */
+  .offers-section {
+    padding: 10px; /* Reduce padding */
+  }
+
+  .offers-title {
+    font-size: 16px; /* Smaller title */
+  }
+
+  .offers-list .offer-item {
+    font-size: 13px; /* Reduce font size */
+  }
+
+  .offer-terms,
+  .view-more {
+    font-size: 12px; /* Smaller font for T&C */
+  }
+
+  /* Buttons */
+  .buy-now-btn,
+  .add-to-cart-btn {
+    font-size: 14px; /* Reduce font size */
+    padding: 10px; /* Adjust padding */
+  }
+  .section {
+    margin-bottom: 5px; /* Reduce margin for smaller screens */
+    padding-left: 10px;
+  }
+}
+
+/* Extra small screens (up to 576px) */
+@media (max-width: 576px) {
+  /* Product Container */
+  .product-container {
+    margin: 10px; /* Reduce outer margin */
+  }
+
+  /* Product Title */
+  .product-title {
+    font-size: 18px; /* Smaller title */
+  }
+
+  /* Specifications Table */
+  .specifications-title {
+    font-size: 16px; /* Slightly smaller title */
+  }
+
+  .specifications-table td {
+    font-size: 12px; /* Even smaller font for readability */
+  }
+
+  /* Rating Section */
+  .rating-stars {
+    font-size: 14px; /* Slightly smaller stars */
+  }
+
+  .rating-details {
+    font-size: 12px; /* Smaller details */
+  }
+
+  /* View More */
+  .view-more {
+    font-size: 12px; /* Smaller font size */
+  }
+
+  /* Buttons */
+  .buy-now-btn,
+  .add-to-cart-btn {
+    font-size: 13px;
+    padding: 8px;
+  }
 }

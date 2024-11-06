@@ -173,7 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
         quantity: 1,
       });
     }
-
     // Update the button text and cart display
     addToCartButton.textContent = `${
       cart.get(productId).quantity
