@@ -149,7 +149,7 @@
 }
 
 .specifications-table {
-  width: 70%; /* Full width table */
+  width: 100%; /* Full width table */
   border-collapse: collapse; /* Remove gaps between table cells */
   margin-top: 10px; /* Space above the table */
 }
@@ -233,7 +233,8 @@
   margin-bottom: 20px;
 }
 
-.section h2, .specifications-title {
+.section h2,
+.specifications-title {
   font-size: 20px;
   color: #333;
   border-bottom: 2px solid #ddd;
@@ -343,11 +344,12 @@ td {
     margin-bottom: 5px; /* Reduce margin for smaller screens */
     padding-left: 10px;
     text-align: center;
+    /* overflow-x: hidden; */
   }
 }
 
 /* Extra small screens (up to 576px) */
-@media (max-width: 576px) {
+@media (max-width: 500px) {
   /* Product Container */
   .product-container {
     margin: 0 auto; /* Center container */
@@ -368,6 +370,21 @@ td {
 
   .specifications-table td {
     font-size: 12px; /* Even smaller font for readability */
+  }
+  .specifications-table {
+    width: 100%; /* Full width on mobile */
+    box-sizing: border-box;
+    overflow-x: hidden; /* Enable horizontal scrolling */
+    border-collapse: collapse;
+  }
+  .table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+  .spec-name,
+  .spec-value {
+    font-size: 10px; /* Smaller font size for readability */
+    width: auto;
   }
 
   /* Rating Section */
