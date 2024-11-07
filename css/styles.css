@@ -29,7 +29,7 @@ body {
 }
 
 /* Mobile view adjustments of cart. */
-@media (max-width: 768px) {
+@media (max-width: 705px) {
   .cart-panel.open {
     width: 100%;
     right: 0;
@@ -870,7 +870,7 @@ header .menu-dropdown-content a:hover {
 }
 
 /* Hide text on smaller screens if needed */
-@media (max-width: 768px) {
+@media (max-width: 705px) {
   .slide p {
     font-size: 0.9rem;
   }

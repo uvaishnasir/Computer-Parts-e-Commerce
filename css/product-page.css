@@ -8,18 +8,19 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 1300px;
-  margin: 25px;
+  /* max-width: 1300px; */
+  box-sizing: border-box;
+  padding: 15px;
 }
 
 /* Product image section and actions styling */
 .product-image-section {
   width: 30%;
-  height: 435px; /* Full height of the viewport */
+  height: 440px; /* Full height of the viewport */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Space out image and buttons to fill container */
+  justify-content: center; /* Space out image and buttons to fill container */
   position: sticky;
   top: 90px; /* Start sticking at the very top of the viewport */
   z-index: 1;
@@ -27,7 +28,10 @@
 
 .product-image {
   width: 100%; /* Full width of the container */
-  height: 370px;
+  object-fit: cover;
+  max-width: 500px; /* Limit image width to prevent stretching on larger screens */
+  height: 400px;
+  border-radius: 5px;
 }
 
 .product-actions {
@@ -278,12 +282,14 @@ td {
 }
 
 /* Responsive adjustments for mobile view */
-@media (max-width: 768px) {
+@media (max-width: 705px) {
   /* Product Container */
   .product-container {
     flex-direction: column; /* Stack sections vertically */
-    padding: 0px; /* Adjust padding for smaller screens */
-    margin: 0px;
+    padding: 0; /* Adjust padding for smaller screens */
+    margin: 0 auto; /* Center container */
+    max-width: 100%; /* Prevent horizontal overflow */
+    box-sizing: border-box;
   }
 
   /* Product Image Section */
@@ -293,6 +299,9 @@ td {
     position: relative; /* Remove sticky positioning */
     top: 0; /* Reset top position */
     padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Center the image section */
   }
 
   .product-image {
@@ -305,49 +314,24 @@ td {
   /* Product Details Section */
   .product-details-section {
     width: 100%; /* Full width on mobile */
-    padding: 5px; /* Reduce padding */
-    margin: 0px;
+    padding: 10px; /* Reduce padding */
+    margin: 0 auto; /* Center details section */
+    box-sizing: border-box;
   }
 
-  /* Product Title */
-  .product-title {
-    font-size: 20px; /* Slightly smaller title */
-  }
-
-  /* Price and Description */
-  .product-price {
-    font-size: 24px; /* Reduce font size */
-  }
-
-  .product-description {
-    font-size: 14px; /* Slightly smaller text */
+  /* Center align text and elements */
+  .product-price,
+  .product-description,
+  .offers-section,
+  .specifications-title,
+  .specifications-table {
+    text-align: center; /* Center align text */
   }
 
   /* Specifications Table */
   .specifications-table {
     width: 100%; /* Full width on mobile */
-  }
-
-  .specifications-table td {
-    font-size: 14px; /* Smaller font for readability */
-  }
-
-  /* Offers Section */
-  .offers-section {
-    padding: 10px; /* Reduce padding */
-  }
-
-  .offers-title {
-    font-size: 16px; /* Smaller title */
-  }
-
-  .offers-list .offer-item {
-    font-size: 13px; /* Reduce font size */
-  }
-
-  .offer-terms,
-  .view-more {
-    font-size: 12px; /* Smaller font for T&C */
+    box-sizing: border-box;
   }
 
   /* Buttons */
@@ -355,10 +339,17 @@ td {
   .add-to-cart-btn {
     font-size: 14px; /* Reduce font size */
     padding: 10px; /* Adjust padding */
+    margin: 0 auto; /* Center buttons */
+    display: block;
+    width: 80%; /* Responsive button width */
   }
+
+  /* Extra adjustments to prevent overflow */
   .section {
     margin-bottom: 5px; /* Reduce margin for smaller screens */
     padding-left: 10px;
+    text-align: center;
+    overflow-x: hidden; /* Prevent overflow */
   }
 }
 
@@ -366,7 +357,10 @@ td {
 @media (max-width: 576px) {
   /* Product Container */
   .product-container {
-    margin: 10px; /* Reduce outer margin */
+    margin: 0 auto; /* Center container */
+    padding: 5px;
+    max-width: 100%; /* Prevent horizontal overflow */
+    box-sizing: border-box;
   }
 
   /* Product Title */
@@ -402,5 +396,7 @@ td {
   .add-to-cart-btn {
     font-size: 13px;
     padding: 8px;
+    margin: 0 auto; /* Center buttons */
+    width: 80%; /* Make buttons responsive */
   }
 }
