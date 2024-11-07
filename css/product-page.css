@@ -147,12 +147,6 @@
   color: #555; /* Slightly lighter color for details */
   font-size: 13px;
 }
-/* specifications-table */
-.specifications-title {
-  margin-top: 20px; /* Space above the specifications title */
-  font-size: 18px; /* Font size for the title */
-  font-weight: bold; /* Make title bold */
-}
 
 .specifications-table {
   width: 70%; /* Full width table */
@@ -239,7 +233,7 @@
   margin-bottom: 20px;
 }
 
-.section h2 {
+.section h2, .specifications-title {
   font-size: 20px;
   color: #333;
   border-bottom: 2px solid #ddd;
@@ -349,7 +343,6 @@ td {
     margin-bottom: 5px; /* Reduce margin for smaller screens */
     padding-left: 10px;
     text-align: center;
-    overflow-x: hidden; /* Prevent overflow */
   }
 }
 
