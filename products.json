@@ -1,154 +1,154 @@
 [
   {
     "id": 1,
-    "name": "High-Performance CPU",
+    "name": "Intel Core i9 High-Performance CPU",
     "price": 250,
     "image": "assets/products/part1.jpeg",
     "alt": "CPU"
   },
   {
     "id": 2,
-    "name": "Gaming GPU",
+    "name": "NVIDIA GeForce RTX 3080 Gaming GPU",
     "price": 400,
     "image": "assets/products/part2.jpeg",
     "alt": "GPU"
   },
   {
     "id": 3,
-    "name": "16GB RAM",
+    "name": "Kingston HyperX Fury 16GB DDR4 RAM",
     "price": 120,
     "image": "assets/products/part3.jpeg",
     "alt": "RAM"
   },
   {
     "id": 4,
-    "name": "1TB SSD",
+    "name": "Samsung 970 EVO Plus 1TB SSD",
     "price": 150,
     "image": "assets/products/part4.jpg",
     "alt": "SSD"
   },
   {
     "id": 5,
-    "name": "Gaming Motherboard",
+    "name": "ASUS ROG Strix Gaming Motherboard",
     "price": 200,
     "image": "assets/products/part5.png",
     "alt": "Motherboard"
   },
   {
     "id": 6,
-    "name": "650W Power Supply",
+    "name": "Corsair RM650x 650W Power Supply Unit",
     "price": 80,
     "image": "assets/products/part6.jpg",
     "alt": "Power Supply"
   },
   {
     "id": 7,
-    "name": "RGB CPU Cooler",
+    "name": "Cooler Master Hyper 212 RGB CPU Cooler",
     "price": 60,
     "image": "assets/products/part7.jpg",
     "alt": "CPU Cooler"
   },
   {
     "id": 8,
-    "name": "Mechanical Keyboard",
+    "name": "Logitech G Pro Mechanical Gaming Keyboard",
     "price": 90,
     "image": "assets/products/part8.jpg",
     "alt": "Keyboard"
   },
   {
     "id": 9,
-    "name": "Gaming Mouse",
+    "name": "Razer DeathAdder V2 Gaming Mouse",
     "price": 40,
     "image": "assets/products/part9.jpg",
     "alt": "Mouse"
   },
   {
     "id": 10,
-    "name": "Gaming Monitor",
+    "name": "Acer Predator XB271HU Gaming Monitor",
     "price": 200,
     "image": "assets/products/part10.jpg",
     "alt": "Monitor"
   },
   {
     "id": 11,
-    "name": "CPU",
+    "name": "Intel Core i7 Processor CPU",
     "price": 200,
     "image": "assets/products/part1.jpeg",
     "alt": "CPU"
   },
   {
     "id": 12,
-    "name": "GPU",
+    "name": "AMD Radeon RX 6700 XT GPU",
     "price": 450,
     "image": "assets/products/part2.jpeg",
     "alt": "GPU"
   },
   {
     "id": 13,
-    "name": "Wi-Fi Adapter",
+    "name": "TP-Link Archer T4U Wi-Fi Adapter",
     "price": 30,
     "image": "assets/products/part11.jpg",
     "alt": "Wi-Fi Adapter"
   },
   {
     "id": 14,
-    "name": "External Hard Drive",
+    "name": "Seagate Expansion 1TB External Hard Drive",
     "price": 100,
     "image": "assets/products/part12.jpeg",
     "alt": "External Hard Drive"
   },
   {
     "id": 15,
-    "name": "USB Hub",
+    "name": "Anker PowerExpand 6-in-1 USB Hub",
     "price": 25,
     "image": "assets/products/part13.jpg",
     "alt": "USB Hub"
   },
   {
     "id": 16,
-    "name": "PC Case",
+    "name": "NZXT H510 Compact PC Case",
     "price": 80,
     "image": "assets/products/part14.jpeg",
     "alt": "PC Case"
   },
   {
     "id": 17,
-    "name": "Thermal Paste",
+    "name": "Arctic MX-4 High Performance Thermal Paste",
     "price": 10,
     "image": "assets/products/part15.jpg",
     "alt": "Thermal Paste"
   },
   {
     "id": 18,
-    "name": "Sound Card",
+    "name": "Creative Sound Blaster Audigy FX Sound Card",
     "price": 50,
     "image": "assets/products/part16.png",
     "alt": "Sound Card"
   },
   {
     "id": 19,
-    "name": "Gaming Controller",
+    "name": "Xbox Wireless Gaming Controller",
     "price": 60,
     "image": "assets/products/part17.jpg",
     "alt": "Gaming Controller"
   },
   {
     "id": 20,
-    "name": "Gaming Headset",
+    "name": "HyperX Cloud II Gaming Headset",
     "price": 70,
     "image": "assets/products/part18.png",
     "alt": "Gaming Headset"
   },
   {
     "id": 21,
-    "name": "Webcam",
+    "name": "Logitech C920 HD Pro Webcam",
     "price": 40,
     "image": "assets/products/part19.jpg",
     "alt": "Webcam"
   },
   {
     "id": 22,
-    "name": "Bluetooth Adapter",
+    "name": "ASUS USB-BT500 Bluetooth 5.0 Adapter",
     "price": 20,
     "image": "assets/products/part20.jpeg",
     "alt": "Bluetooth Adapter"

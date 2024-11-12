@@ -254,18 +254,22 @@ document.addEventListener("DOMContentLoaded", function () {
         li.innerHTML = `
           <div class="cart-item-info">
             <img src="${item.image}" alt="${item.alt}" class="cart-item-img" />
-            ${item.name} - $${item.price}
+            <div class="cart-item-details">
+              <div class="cart-item-name">${item.name}</div>
+            </div>
             <button class="delete-item-btn" data-id="${id}">
-              <i class="bi bi-trash"></i>
+              <i class="bi bi-x-circle"></i>
             </button>
           </div>
           <div class="quantity-controls">
-            <button class="decrease-quantity-btn" data-id="${id}">-</button>
-            <div>${item.quantity}</div>
-            <button class="increase-quantity-btn" data-id="${id}">+</button>
+          <button class="decrease-quantity-btn" data-id="${id}">-</button>
+          <div>${item.quantity}</div>
+          <button class="increase-quantity-btn" data-id="${id}">+</button>
           </div>
+          <div class="cart-item-price">${item.quantity} x $${item.price}</div>
         `;
         cartItemsList.appendChild(li);
+
         // Update the button text based on quantity
         const buttonRef = buttonReferences.get(id);
         if (buttonRef) {
@@ -273,15 +277,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      //Add checkout button and subTotal div.
+      // Add checkout button and subtotal with structured alignment
       const subTotal = document.createElement("div");
       subTotal.classList.add("cart-subtotal");
-      subTotal.innerHTML = `<span>Subtotal:</span><span>$${calculateSubtotal()}</span>`;
+      subTotal.innerHTML = `
+        <div class="subtotal-row">
+          <span class="delivery-charge-label">Delivery Charge:</span>
+          <span class="delivery-charge">$0</span>
+        </div>
+        <div class="subtotal-row">
+          <span>SUBTOTAL:</span>
+          <span class="subtotal-amount">$${calculateSubtotal()}</span>
+        </div>
+    `;
       cartItemsList.appendChild(subTotal);
+
+      // Checkout button placed at the bottom of the cart
       const checkoutBtn = document.createElement("button");
       checkoutBtn.textContent = "Checkout";
       checkoutBtn.classList.add("checkout-btn");
       cartItemsList.appendChild(checkoutBtn);
+
       updateQuantityEventListeners();
     }
   }
