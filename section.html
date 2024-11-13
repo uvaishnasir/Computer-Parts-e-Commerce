@@ -161,159 +161,282 @@
     </div>
 
     <main class="section-page">
-      <h1 class="section-title">Processor Section</h1>
-      <div class="products-container">
-        <div class="product-card">
-          <img src="./assets/hot-deals/intel.jpg" alt="Processor 1" />
-          <h2 class="product-name">Intel Core i9 - High Performance</h2>
-          <p class="product-desc">
-            A top-tier processor for gaming and multitasking with 8 cores and 16
-            threads.
-          </p>
-          <div class="product-price">$499</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
+      <p class="section-path">SHOP › SHOP BY CATEGORY › Processors</p>
+      <h2 class="processor-heading">Processors</h2>
+      <div class="top-processor-img">
+        <img
+          src="./assets/intel-processor.jpg"
+          alt="processor image could not load"
+        />
+      </div>
+      <div class="main-container">
+        <aside class="sidebar">
+          <h2>Shop By</h2>
+          <div class="filter-group">
+            <h3>Keywords</h3>
+            <input
+              type="text"
+              class="filter-input"
+              placeholder="Search by keywords"
+            />
+          </div>
 
-        <div class="product-card">
-          <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 2" />
-          <h2 class="product-name">AMD Ryzen 7 - Advanced Processing</h2>
-          <p class="product-desc">
-            Great choice for content creators with excellent performance and
-            efficiency.
-          </p>
-          <div class="product-price">$429</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
+          <div class="filter-group">
+            <h3>Manufacturers</h3>
+            <label><input type="checkbox" /> Intel</label><br />
+            <label><input type="checkbox" /> AMD</label>
+          </div>
 
-        <div class="product-card">
-          <img src="./assets/hot-deals/intel.jpg" alt="Processor 3" />
-          <h2 class="product-name">Intel Core i7 - Performance Boost</h2>
-          <p class="product-desc">
-            A reliable processor for intensive tasks, featuring 6 cores and 12
-            threads.
-          </p>
-          <div class="product-price">$399</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
+          <div class="filter-group">
+            <h3>Price</h3>
+            <input type="range" min="2900" max="16600" class="price-range" />
+            <div class="price-values">
+              <span>₹2900</span> - <span>₹16600</span>
+            </div>
+          </div>
 
-        <div class="product-card">
-          <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 4" />
-          <h2 class="product-name">AMD Ryzen 5 - Gaming Edition</h2>
-          <p class="product-desc">
-            Designed for gaming, with high clock speeds and smooth multitasking
-            capabilities.
-          </p>
-          <div class="product-price">$329</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
+          <div class="filter-group">
+            <h3>Cores</h3>
+            <label><input type="checkbox" /> 4 Cores</label><br />
+            <label><input type="checkbox" /> 6 Cores</label><br />
+            <label><input type="checkbox" /> 8 Cores</label><br />
+            <label><input type="checkbox" /> 12 Cores</label>
+          </div>
 
-        <div class="product-card">
-          <img src="./assets/hot-deals/intel.jpg" alt="Processor 5" />
-          <h2 class="product-name">Intel Core i5 - Mainstream Power</h2>
-          <p class="product-desc">
-            Perfect for everyday use, offering solid performance with 4 cores
-            and 8 threads.
-          </p>
-          <div class="product-price">$279</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
+          <div class="filter-group">
+            <h3>Threads</h3>
+            <label><input type="checkbox" /> 8 Threads</label><br />
+            <label><input type="checkbox" /> 16 Threads</label><br />
+            <label><input type="checkbox" /> 24 Threads</label>
+          </div>
 
-        <div class="product-card">
-          <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 6" />
-          <h2 class="product-name">AMD Ryzen 3 - Entry-Level Workhorse</h2>
-          <p class="product-desc">
-            A budget-friendly choice with good performance for basic
-            applications.
-          </p>
-          <div class="product-price">$199</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
+          <div class="filter-group">
+            <h3>Socket Compatibility</h3>
+            <label><input type="checkbox" /> LGA1200</label><br />
+            <label><input type="checkbox" /> AM4</label><br />
+            <label><input type="checkbox" /> LGA1700</label><br />
+            <label><input type="checkbox" /> TRX4</label>
+          </div>
 
-        <div class="product-card">
-          <img src="./assets/hot-deals/intel.jpg" alt="Processor 7" />
-          <h2 class="product-name">Intel Xeon - Server Grade</h2>
-          <p class="product-desc">
-            Powerful multi-core processor built for servers and high-performance
-            computing.
-          </p>
-          <div class="product-price">$799</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
+          <div class="filter-group">
+            <h3>Max TDP</h3>
+            <label><input type="checkbox" /> Up to 65W</label><br />
+            <label><input type="checkbox" /> 65W - 125W</label><br />
+            <label><input type="checkbox" /> 125W+</label>
+          </div>
 
-        <div class="product-card">
-          <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 8" />
-          <h2 class="product-name">AMD Threadripper - Extreme Multitasking</h2>
-          <p class="product-desc">
-            High-end processor designed for extreme multitasking with 16 cores
-            and 32 threads.
-          </p>
-          <div class="product-price">$1,199</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
+          <div class="filter-group">
+            <h3>Integrated Graphics</h3>
+            <label><input type="checkbox" /> Yes</label><br />
+            <label><input type="checkbox" /> No</label>
+          </div>
+        </aside>
 
-        <div class="product-card">
-          <img src="./assets/hot-deals/intel.jpg" alt="Processor 9" />
-          <h2 class="product-name">Intel Pentium Gold - Budget Option</h2>
-          <p class="product-desc">
-            Affordable processor for basic computing needs, with solid
-            efficiency.
-          </p>
-          <div class="product-price">$149</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
+        <div class="products-container">
+          <div class="product-card">
+            <div class="discount-badge">20% OFF</div>
+            <img src="./assets/hot-deals/intel.jpg" alt="Processor 1" />
+            <h2 class="product-name">Intel Core i9 - High Performance</h2>
+            <p class="product-desc">
+              A top-tier processor for gaming and multitasking with 8 cores and
+              16 threads.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$499</span>
+              <span class="original-price">$599</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
 
-        <div class="product-card">
-          <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 10" />
-          <h2 class="product-name">AMD Athlon - Entry-Level Processor</h2>
-          <p class="product-desc">
-            Great for entry-level systems, ideal for budget-conscious buyers.
-          </p>
-          <div class="product-price">$99</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
-        <div class="product-card">
-          <img src="./assets/hot-deals/intel.jpg" alt="Processor 9" />
-          <h2 class="product-name">Intel Pentium - Budget Option</h2>
-          <p class="product-desc">
-            Affordable processor for basic computing needs, with solid
-            efficiency.
-          </p>
-          <div class="product-price">$168</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
-        </div>
-        <div class="product-card">
-          <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 2" />
-          <h2 class="product-name">AMD Ryzen 7 - Advanced Processing</h2>
-          <p class="product-desc">
-            Great choice for content creators with excellent performance and
-            efficiency.
-          </p>
-          <div class="product-price">$429</div>
-          <button class="add-to-cart-btn">
-            Add to Cart <i class="bi bi-cart-plus"></i>
-          </button>
+          <div class="product-card">
+            <div class="discount-badge">10% OFF</div>
+            <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 2" />
+            <h2 class="product-name">AMD Ryzen 7 - Advanced Processing</h2>
+            <p class="product-desc">
+              Great choice for content creators with excellent performance and
+              efficiency.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$429</span>
+              <span class="original-price">$479</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
+
+          <div class="product-card">
+            <div class="discount-badge">15% OFF</div>
+            <img src="./assets/hot-deals/intel.jpg" alt="Processor 3" />
+            <h2 class="product-name">Intel Core i7 - Performance Boost</h2>
+            <p class="product-desc">
+              A reliable processor for intensive tasks, featuring 6 cores and 12
+              threads.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$399</span>
+              <span class="original-price">$469</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
+
+          <div class="product-card">
+            <div class="discount-badge">8% OFF</div>
+            <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 4" />
+            <h2 class="product-name">AMD Ryzen 5 - Gaming Edition</h2>
+            <p class="product-desc">
+              Designed for gaming, with high clock speeds and smooth
+              multitasking capabilities.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$329</span>
+              <span class="original-price">$359</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
+
+          <div class="product-card">
+            <div class="discount-badge">12% OFF</div>
+            <img src="./assets/hot-deals/intel.jpg" alt="Processor 5" />
+            <h2 class="product-name">Intel Core i5 - Mainstream Power</h2>
+            <p class="product-desc">
+              Perfect for everyday use, offering solid performance with 4 cores
+              and 8 threads.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$279</span>
+              <span class="original-price">$319</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
+
+          <div class="product-card">
+            <div class="discount-badge">15% OFF</div>
+            <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 6" />
+            <h2 class="product-name">AMD Ryzen 3 - Entry-Level Workhorse</h2>
+            <p class="product-desc">
+              A budget-friendly choice with good performance for basic
+              applications.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$199</span>
+              <span class="original-price">$229</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
+
+          <div class="product-card">
+            <div class="discount-badge">18% OFF</div>
+            <img src="./assets/hot-deals/intel.jpg" alt="Processor 7" />
+            <h2 class="product-name">Intel Xeon - Server Grade</h2>
+            <p class="product-desc">
+              Powerful multi-core processor built for servers and
+              high-performance computing.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$799</span>
+              <span class="original-price">$979</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
+
+          <div class="product-card">
+            <div class="discount-badge">25% OFF</div>
+            <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 8" />
+            <h2 class="product-name">
+              AMD Threadripper - Extreme Multitasking
+            </h2>
+            <p class="product-desc">
+              High-end processor designed for extreme multitasking with 16 cores
+              and 32 threads.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$1,199</span>
+              <span class="original-price">$1,599</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
+
+          <div class="product-card">
+            <div class="discount-badge">10% OFF</div>
+            <img src="./assets/hot-deals/intel.jpg" alt="Processor 9" />
+            <h2 class="product-name">Intel Pentium Gold - Budget Option</h2>
+            <p class="product-desc">
+              Affordable processor for basic computing needs, with solid
+              efficiency.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$149</span>
+              <span class="original-price">$169</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
+
+          <div class="product-card">
+            <div class="discount-badge">15% OFF</div>
+            <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 10" />
+            <h2 class="product-name">AMD Athlon - Entry-Level Processor</h2>
+            <p class="product-desc">
+              Great for entry-level systems, ideal for budget-conscious buyers.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$99</span>
+              <span class="original-price">$119</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
+
+          <div class="product-card">
+            <div class="discount-badge">12% OFF</div>
+            <img src="./assets/hot-deals/intel.jpg" alt="Processor 11" />
+            <h2 class="product-name">Intel Pentium - Budget Option</h2>
+            <p class="product-desc">
+              Affordable processor for basic computing needs, with solid
+              efficiency.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$168</span>
+              <span class="original-price">$189</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
+
+          <div class="product-card">
+            <div class="discount-badge">8% OFF</div>
+            <img src="./assets/hot-deals/ryzen-3600.jpg" alt="Processor 12" />
+            <h2 class="product-name">AMD Ryzen 7 - Advanced Processing</h2>
+            <p class="product-desc">
+              Great choice for content creators with excellent performance and
+              efficiency.
+            </p>
+            <div class="price-container">
+              <span class="discounted-price">$429</span>
+              <span class="original-price">$469</span>
+            </div>
+            <button class="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i>Add to Cart
+            </button>
+          </div>
         </div>
       </div>
     </main>

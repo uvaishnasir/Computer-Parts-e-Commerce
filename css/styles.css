@@ -333,9 +333,10 @@ body {
 
 /* Add to Cart button */
 .add-to-cart {
+  width: 80%;
   position: absolute;
   bottom: 20px;
-  background-color: #007bff;
+  background-color: #034286;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -344,6 +345,9 @@ body {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.add-to-cart i {
+  margin-right: 5px;
 }
 
 /* Hover effect for product card */
@@ -892,33 +896,6 @@ header .menu-dropdown-content a:hover {
   width: 100%;
   overflow: hidden;
   position: relative;
-}
-
-/* Hot Deals Slider Button Styling */
-.hot-deals-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 24px;
-  z-index: 1;
-  transition: background-color 0.3s ease;
-}
-
-.hot-deals-button:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.hot-deals-left {
-  left: 10px;
-}
-
-.hot-deals-right {
-  right: 10px;
 }
 
 .slider {

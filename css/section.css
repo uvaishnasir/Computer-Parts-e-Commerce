@@ -1,45 +1,140 @@
 /* Section Page */
 .section-page {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 25px;
+  margin: 0px 30px;
+  box-sizing: border-box;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  color: #007bff;
+.processor-heading {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: #222;
+  margin-top: 0;
+  padding-bottom: 10px;
+  text-align: left;
+}
+.top-processor-img {
+  margin-bottom: 20px;
+}
+.top-processor-img img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+.section-path {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
-/* Products Container */
-.products-container {
+/* Container for sidebar and products */
+.main-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
 }
 
+/* Sidebar styling */
+.sidebar {
+  width: 20%;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.filter-group label {
+  display: block;
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.filter-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.price-range {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Products container styling */
+.products-container {
+  box-sizing: border-box;
+  width: 100%; /* Full width of container */
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four cards per row */
+  gap: 10; /* Remove gaps between grid items */
+}
+
+/* Product card styling */
 .product-card {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 280px;
   padding: 15px;
-  transition: transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
   text-align: center;
+  transition: transform 0.2s ease;
+  width: 80%; /* Full width of grid cell */
+  height: 80%; /* Full height of grid cell */
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
+/* Discount badge styling */
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #034286;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 5px 8px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+/* Product image */
 .product-card img {
   width: 100%;
   border-radius: 5px;
 }
 
+/* Product name styling */
 .product-name {
   font-size: 1.2rem;
   font-weight: bold;
@@ -47,22 +142,37 @@
   color: #333;
 }
 
+/* Product description */
 .product-desc {
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 10px;
 }
 
-.product-price {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #007bff;
+/* Price container styling */
+.price-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 10px;
 }
 
-/* Add to Cart Button */
+/* Original and Discounted Prices */
+.original-price {
+  font-size: 1rem;
+  color: #888;
+  text-decoration: line-through;
+}
+
+.discounted-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #034286;
+}
+
+/* Add to Cart Button - Hidden by default */
 .add-to-cart-btn {
-  background-color: #007bff;
+  background-color: #034286;
   color: #fff;
   border: none;
   padding: 10px 15px;
@@ -71,12 +181,129 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: 80%;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Show Add to Cart Button and Hide Prices on Hover */
+.product-card:hover .price-container,
+.product-card:hover .product-desc {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.product-card:hover .add-to-cart-btn {
+  opacity: 1;
+  visibility: visible;
 }
 
 .add-to-cart-btn i {
-  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .add-to-cart-btn:hover {
   background-color: #0056b3;
+}
+
+@media (max-width: 1200px) {
+  .products-container {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* 3 cards per row on medium-large screens */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  /* Reduce font size and spacing */
+  .processor-heading {
+    font-size: 1.1rem;
+  }
+
+  .product-name {
+    font-size: 1rem;
+  }
+
+  .product-desc {
+    font-size: 0.8rem;
+  }
+
+  .discount-badge {
+    font-size: 0.7rem;
+    padding: 4px 6px;
+  }
+
+  .add-to-cart-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 705px) {
+  .products-container {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 cards per row on medium screens */
+  }
+  /* Stack sidebar below products or hide */
+  .main-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .product-card {
+    padding: 10px;
+  }
+
+  .top-processor-img img {
+    width: 100%; /* Image takes full width of its container */
+    height: auto; /* Maintains aspect ratio by adjusting height automatically */
+    max-height: 450px; /* Sets a maximum height to avoid overly large images on large screens */
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 576px) {
+  .products-container {
+    grid-template-columns: 1fr; /* 1 card per row on small screens */
+  }
+  .top-processor-img img {
+    max-height: 300px; /* Reduce maximum height on small screens */
+  }
+
+  /* Further reduce text size and padding */
+  .processor-heading {
+    font-size: 1rem;
+  }
+
+  .product-name {
+    font-size: 0.9rem;
+  }
+
+  .product-desc {
+    font-size: 0.8rem;
+  }
+
+  .price-container .original-price,
+  .price-container .discounted-price {
+    font-size: 0.9rem;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.85rem;
+  }
 }

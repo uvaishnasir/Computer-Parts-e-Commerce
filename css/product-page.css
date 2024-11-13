@@ -51,6 +51,10 @@
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
+.buy-now-btn i,
+.add-to-cart-btn i {
+  margin-right: 5px;
+}
 
 /* "Buy Now" Button Styles */
 .buy-now-btn {

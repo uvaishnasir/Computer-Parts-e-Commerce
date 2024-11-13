@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const addToCartButton = document.querySelector(".add-to-cart-btn");
   addToCartButton.addEventListener("click", function () {
     const productId = 5; // Assuming the ID of the product is 5
-    const productName = "Gaming Motherboard";
+    const productName = "ASUS ROG Strix Gaming Motherboard";
     const productPrice = 200;
     const productImage = "assets/products/part5.png";
     const productAlt = "Motherboard";
