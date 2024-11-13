@@ -34,7 +34,7 @@ body {
 @media (max-width: 705px) {
   .cart-panel.open {
     width: 100%;
-    right: 0;
+    transform: translateX(0);
   }
 }
 

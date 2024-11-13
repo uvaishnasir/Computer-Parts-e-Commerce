@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <span class="original-price">$${originalPrice}</span>
             </p>
           </a>
-          <button class="add-to-cart">Add to Cart</button>
+          <button class="add-to-cart"><i class="bi bi-cart-plus"></i> Add to Cart</button>
         `;
         productGrid.appendChild(productCard);
       });
