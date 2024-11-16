@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PC Zone</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <title>PC Zone - Login</title>
+    <link rel="stylesheet" href="./css/login-page.css" />
     <link rel="shortcut icon" href="./assets/icon.png" type="image/x-icon" />
     <link
       rel="stylesheet"
@@ -12,305 +12,47 @@
     />
   </head>
   <body>
-    <div class="global-notification">
-      <p>
-        SUMMER SALE FOR ALL PARTS OF COMPUTER AND FREE EXPRESS INTERNATIONAL
-        DELIVERY - OFF 50%! <a href="#">SHOP NOW</a>
-      </p>
-    </div>
+    <main class="login-container">
+      <div class="login-summary">
+        <h1>Sign in to</h1>
+        <h2>PC Zone</h2>
+        <p>If you don't have an account register</p>
+        <span>
+          You can
+          <a class="register-here" href="#/signup"> Register here! </a>
+        </span>
+      </div>
+      <div class="login-box">
+        <form method="POST" id="loginForm">
+          <h2>Sign in</h2>
+          <input
+            type="text"
+            placeholder="Enter email or user name"
+            name="username"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            required
+          />
+          <a class="forgot" href="#">Forgot password?</a>
+          <button type="submit">Login</button>
+        </form>
 
-    <header class="header">
-      <div class="header-row">
-        <div class="header-left">
-          <a href="#" class="logo">
-            <img id="logo-img" src="./assets/logo.png" alt="Computer" />
+        <p class="continue-with">or continue with</p>
+        <div class="continue-icon">
+          <a rel="noreferrer" target="_blank" href="https://apple.com">
+            <img src="./assets/icons/apple.png" alt="Apple icon" />
           </a>
-          <a class="PC-zone" href="#">PC Zone</a>
-        </div>
-        <div class="header-center" id="sidebar">
-          <nav class="navigation">
-            <ul class="menu-list">
-              <li class="menu-list-item">
-                <a href="#" class="menu-link active"
-                  >Home
-                  <i class="bi bi-chevron-down"></i>
-                </a>
-                <div class="menu-dropdown-wrapper">
-                  <ul class="menu-dropdown-content">
-                    <li><a href="#">PC Deals</a></li>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">PC Upgrades</a></li>
-                    <li><a href="#">PC Accessories </a></li>
-                    <li><a href="#">PC Gaming Gear</a></li>
-                    <li><a href="#">Build Your PC</a></li>
-                    <li><a href="#">Gaming Hub</a></li>
-                    <li><a href="#">Tech Trends</a></li>
-                    <li><a href="#">Workstation Essentials</a></li>
-                    <li><a href="#">High-Performance Zone</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="menu-list-item megamenu-wrapper">
-                <a class="menu-link" href="#"
-                  >Shop
-                  <i class="bi bi-chevron-down"></i>
-                </a>
-                <div class="menu-dropdown-wrapper">
-                  <div class="menu-dropdown-megamenu">
-                    <div class="megamenu-links">
-                      <div class="megamenu-products">
-                        <h3 class="megamenu-product-title">Shop by Category</h3>
-                        <ul class="megamenu-menu-list">
-                          <li><a href="/section.html">All Components</a></li>
-                          <li><a href="/section.html">Processor</a></li>
-                          <li><a href="/section.html">Motherboards</a></li>
-                          <li><a href="/section.html">Graphics Cards</a></li>
-                          <li><a href="/section.html">Storage Devices</a></li>
-                          <li><a href="/section.html">Cooling & Power</a></li>
-                        </ul>
-                      </div>
-                      <div class="megamenu-products">
-                        <h3 class="megamenu-product-title">Browse Options</h3>
-                        <ul class="megamenu-menu-list">
-                          <li><a href="#">Popular Products</a></li>
-                          <li><a href="#">New Arrivals</a></li>
-                          <li><a href="#">Best Deals</a></li>
-                          <li><a href="#">Quick View</a></li>
-                          <li><a href="#">Cart Sidebar</a></li>
-                          <li><a href="#">Order Summary</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="menu-list-item">
-                <a class="menu-link" href="#">Contact</a>
-              </li>
-              <li class="menu-list-item">
-                <a class="menu-link" href="#">About</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="header-right">
-          <div class="header-right-links">
-            <a href="#"><i class="bi bi-person"></i></a>
-            <button class="search-button"><i class="bi bi-search"></i></button>
-            <a href="#"><i class="bi bi-heart"></i></a>
-            <div class="header-cart">
-              <a class="header-cart-link" href="#"
-                ><i class="bi bi-bag"></i><span id="cart-count">0</span></a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <div class="mobile-header">
-      <!-- Add this new block for the logo (copied from the header-left section) -->
-      <a href="#" class="logo">
-        <img id="logo-img" src="./assets/logo.png" alt="Computer" />
-      </a>
-
-      <button class="menu-toggle" aria-label="Toggle menu">
-        <i class="bi bi-list"></i>
-      </button>
-
-      <!-- Add this new block for the icons (copied from the header-right section) -->
-      <div class="mobile-header-icons">
-        <a href="#"><i class="bi bi-person"></i></a>
-        <button class="search-button"><i class="bi bi-search"></i></button>
-        <a href="#"><i class="bi bi-heart"></i></a>
-        <div class="header-cart">
-          <a class="mobile-header-cart" href="#"
-            ><i class="bi bi-bag"></i><span id="cart-count-mobile">0</span></a
-          >
-        </div>
-      </div>
-      <nav class="mobile-navigation">
-        <ul class="mobile-menu-list">
-          <li><a href="#" class="menu-link">Home</a></li>
-          <li>
-            <a href="#" class="menu-link">Shop</a>
-            <div class="mobile-dropdown">
-              <ul>
-                <li><a href="#">Shop Standard</a></li>
-                <li><a href="#">Shop Full</a></li>
-                <li><a href="#">Shop Only Categories</a></li>
-                <li><a href="#">Shop Image Categories</a></li>
-                <li><a href="#">Shop List</a></li>
-              </ul>
-            </div>
-          </li>
-          <li><a href="#" class="menu-link">Contact</a></li>
-          <li><a href="#" class="menu-link">About</a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <div class="cart-panel">
-      <div class="cart-header">
-        <h2>My Cart</h2>
-        <button id="close-cart">X</button>
-      </div>
-      <ul id="cart-items">
-        <!-- Cart items will be added dynamically-->
-      </ul>
-    </div>
-    <main>
-      <!-- offers container -->
-      <h1 class="content-heading">Grab Your Best Deals</h1>
-      <div class="offer-container">
-        <div class="offer-image">
-          <a href="#">
-            <img src="./assets/offers/diwali-offers.jpg" alt="diwali-offers" />
-          </a>
-        </div>
-        <div class="offer-image">
-          <a href="#">
-            <img src="./assets/offers/Bank-Offer-1.jpg" alt="BANK Offer" />
-          </a>
-        </div>
-        <div class="offer-image">
-          <a href="#">
-            <img
-              src="https://mdcomputers.in/image/catalog/2024/oct/25-10-24/razer-diwali-offer-1170x220px.webp"
-              alt="Game Offer"
-            />
-          </a>
-        </div>
-        <div class="offer-image">
-          <a href="#">
-            <img src="./assets/offers/ASUS-Game-Offer.jpg" alt="Game Offer" />
-          </a>
-        </div>
-      </div>
-
-      <!-- product grids -->
-      <h1 class="content-heading">Make Your PC Faster</h1>
-      <div class="product-slider">
-        <button class="slider-button left-button">‹</button>
-        <div class="product-grid">
-          <!-- Product cards will be dynamically added here by JavaScript -->
-        </div>
-        <button class="slider-button right-button">›</button>
-      </div>
-
-      <!-- Slider Section -->
-      <div class="slider-section">
-        <h1 class="content-heading slider-title">Hot Deals</h1>
-        <button class="hot-deals-button hot-deals-left">‹</button>
-        <div class="slider">
-          <!-- Slide 1 -->
-          <div class="slide">
-            <img
-              src="./assets/hot-deals/corsair.jpg"
-              alt="Slider can't be Loaded"
-            />
-          </div>
-          <!-- Slide 2 -->
-          <div class="slide">
-            <img
-              src="./assets/hot-deals/g-skill.jpg"
-              alt="Slider can't be Loaded"
-            />
-          </div>
-          <!-- Slide 3 -->
-          <div class="slide">
-            <img
-              src="./assets/hot-deals/image.png"
-              alt="Slider can't be Loaded"
-            />
-          </div>
-          <!-- Slide 4 -->
-          <div class="slide">
-            <img
-              src="./assets/hot-deals/intel.jpg"
-              alt="Slider can't be Loaded"
-            />
-          </div>
-          <!-- Slide 5 -->
-          <div class="slide">
-            <img
-              src="./assets/hot-deals/Crucial-Memory.jpg"
-              alt="Slider can't be Loaded"
-            />
-          </div>
-          <!-- Slide 6 -->
-          <div class="slide">
-            <img
-              src="./assets/hot-deals/ryzen-3600.jpg"
-              alt="Slider can't be Loaded"
-            />
-          </div>
-        </div>
-        <button class="hot-deals-button hot-deals-right">›</button>
-      </div>
-
-      <!-- offers container -->
-      <h1 class="content-heading">Top Brands</h1>
-      <div class="memory-container">
-        <div class="memory-image">
-          <img src="./assets/images/ASUS.jpg" alt="Loading" />
-        </div>
-        <div class="memory-image">
-          <img src="./assets/images/kingston-case.jpg" alt="Loading" />
-        </div>
-      </div>
-      <div class="offer-container">
-        <h1 class="content-heading">Top Memories</h1>
-        <div class="offer-image">
-          <a href="#">
-            <img src="./assets/images/Crucial-Memory.jpg" alt="Loading" />
+          <a rel="noreferrer" target="_blank" href="https://google.com">
+            <img src="./assets/icons/google.png" alt="Google icon" />
           </a>
         </div>
       </div>
     </main>
 
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-section about">
-          <h4>About Us</h4>
-          <p>
-            We provide top-quality computer parts with reliable support,
-            ensuring you get the best hardware for your needs.
-          </p>
-        </div>
-        <div class="footer-section links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
-        </div>
-        <div class="footer-section contact">
-          <h4>Contact Us</h4>
-          <p><i class="bi bi-telephone-fill"></i> +91 123 456 7890</p>
-          <p><i class="bi bi-envelope-fill"></i> support@computershop.com</p>
-          <p>
-            <i class="bi bi-geo-alt-fill"></i> 123 Tech Street, New Delhi, India
-          </p>
-        </div>
-        <div class="footer-section social">
-          <h4>Follow Us</h4>
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="#"><i class="bi bi-twitter"></i></a>
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-linkedin"></i></a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        &copy; 2024 PC Zone | All Rights Reserved <br />Designed with ❤️ by
-        Uvaish Nasir
-      </div>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <script src="./js/login.js"></script>
   </body>
 </html>
