@@ -175,7 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
   addToCartButton.addEventListener("click", function () {
     const productId = 5; // Assuming the ID of the product is 5
     const productName = "ASUS ROG Strix Gaming Motherboard";
-    const productPrice = 200;
+    const productPrice = 199;
+    const mrp = 249;
+    const discount = 20;
     const productImage = "assets/products/part5.png";
     const productAlt = "Motherboard";
 
@@ -190,6 +192,8 @@ document.addEventListener("DOMContentLoaded", function () {
         id: productId,
         name: productName,
         price: productPrice,
+        mrp: mrp,
+        discount: discount,
         image: productImage,
         alt: productAlt,
         quantity: 1,

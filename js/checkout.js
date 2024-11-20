@@ -1,5 +1,4 @@
 const cart = new Map();
-// Add 1 product to cart
 cart.set(5, {
   id: 5,
   name: "ASUS ROG Strix Gaming Motherboard",
@@ -8,8 +7,8 @@ cart.set(5, {
   discount: 20,
   image: "assets/products/part5.png",
   alt: "Motherboard",
+  quantity: 1,
 });
-
 document.addEventListener("DOMContentLoaded", function () {
   const headerCart = document.querySelector(".header-cart-link");
   const mobileCart = document.querySelector(".mobile-header-cart");
