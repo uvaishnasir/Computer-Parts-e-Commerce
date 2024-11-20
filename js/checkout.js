@@ -7,6 +7,7 @@ cart.set(5, {
   price: "$200",
   quantity: 1,
 });
+
 document.addEventListener("DOMContentLoaded", function () {
   const headerCart = document.querySelector(".header-cart-link");
   const mobileCart = document.querySelector(".mobile-header-cart");
