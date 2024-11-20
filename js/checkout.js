@@ -1,11 +1,13 @@
 const cart = new Map();
 // Add 1 product to cart
 cart.set(5, {
+  id: 5,
   name: "ASUS ROG Strix Gaming Motherboard",
-  image: "./assets/products/part5.png",
-  alt: "motherboard image",
-  price: "200",
-  quantity: 1,
+  mrp: 249,
+  price: 199,
+  discount: 20,
+  image: "assets/products/part5.png",
+  alt: "Motherboard",
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -92,22 +94,28 @@ document.addEventListener("DOMContentLoaded", function () {
             <img src="${item.image}" alt="${item.alt}" class="cart-item-img" />
             <div class="cart-item-details">
               <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-price">
+                <span class="cart-item-mrp">$${item.mrp}</span>
+                <span>$${item.price}</span>
+                <span class="cart-item-discount">${item.discount}% OFF</span>
+              </div>
+
+              <div class="cart-item-offers">2 Offers Available</div>
             </div>
             <button class="delete-item-btn" data-id="${id}">
               <i class="bi bi-x-circle"></i>
             </button>
           </div>
           <div class="quantity-controls">
-          <button class="decrease-quantity-btn" data-id="${id}">-</button>
-          <div>${item.quantity}</div>
-          <button class="increase-quantity-btn" data-id="${id}">+</button>
+            <button class="decrease-quantity-btn" data-id="${id}">-</button>
+            <div>${item.quantity}</div>
+            <button class="increase-quantity-btn" data-id="${id}">+</button>
           </div>
-          <div class="cart-item-price">${item.quantity} x $${item.price}</div>
         `;
         cartItemsList.appendChild(li);
       });
 
-      // Add checkout button and subtotal with structured alignment
+      // Updated Subtotal Section
       const subTotal = document.createElement("div");
       subTotal.classList.add("cart-subtotal");
       subTotal.innerHTML = `
@@ -116,17 +124,20 @@ document.addEventListener("DOMContentLoaded", function () {
           <span class="delivery-charge">$0</span>
         </div>
         <div class="subtotal-row">
-          <span>SUBTOTAL:</span>
+          <span>Subtotal:</span>
           <span class="subtotal-amount">$${calculateSubtotal()}</span>
         </div>
-    `;
+        <div class="delivery-note">Free delivery on orders over $50!</div>
+        <div class="delivery-date">Estimated Delivery: 3-5 days</div>
+      `;
       cartItemsList.appendChild(subTotal);
 
-      // Checkout button placed at the bottom of the cart
+      // Checkout Button
       const checkoutBtn = document.createElement("button");
-      checkoutBtn.textContent = "Checkout";
+      checkoutBtn.textContent = "Proceed to Checkout";
       checkoutBtn.classList.add("checkout-btn");
       cartItemsList.appendChild(checkoutBtn);
+
       updateQuantityEventListeners();
     }
   }
