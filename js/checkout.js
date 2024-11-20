@@ -4,7 +4,7 @@ cart.set(5, {
   name: "ASUS ROG Strix Gaming Motherboard",
   image: "./assets/products/part5.png",
   alt: "motherboard image",
-  price: "$200",
+  price: "200",
   quantity: 1,
 });
 
@@ -134,42 +134,24 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateQuantityEventListeners() {
     document.querySelectorAll(".increase-quantity-btn").forEach((button) => {
       button.addEventListener("click", function () {
-        const productId = parseInt(this.getAttribute("data-id"), 10);
-        const cartItem = cart.get(productId);
+        const cartItem = cart.get(5);
         cartItem.quantity++;
         updateCart();
-        const addToCartButton = document.querySelector(".add-to-cart-btn");
-        addToCartButton.textContent = `${cartItem.quantity} added in cart`;
       });
     });
 
     document.querySelectorAll(".decrease-quantity-btn").forEach((button) => {
       button.addEventListener("click", function () {
-        const productId = parseInt(this.getAttribute("data-id"), 10);
-        const cartItem = cart.get(productId);
-        const addToCartButton = document.querySelector(".add-to-cart-btn");
+        const cartItem = cart.get(5);
         if (cartItem.quantity > 1) {
           cartItem.quantity--;
-          addToCartButton.textContent = `${cartItem.quantity} added in cart`;
         } else {
           cart.delete(productId);
-          addToCartButton.textContent = "Add to Cart";
         }
         updateCart();
-      });
-    });
-
-    document.querySelectorAll(".delete-item-btn").forEach((button) => {
-      button.addEventListener("click", function () {
-        const productId = parseInt(this.getAttribute("data-id"), 10);
-        cart.delete(productId);
-        updateCart();
-        const addToCartButton = document.querySelector(".add-to-cart-btn");
-        addToCartButton.textContent = "Add to Cart";
       });
     });
   }
 
   updateCart();
-  calculateSubtotal();
 });

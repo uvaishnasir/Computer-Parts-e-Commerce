@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  
   // Add event on "Add to Cart" button
   const addToCartButton = document.querySelector(".add-to-cart-btn");
   addToCartButton.addEventListener("click", function () {

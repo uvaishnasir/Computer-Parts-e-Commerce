@@ -29,7 +29,6 @@
 .contact-info,
 .contact-form {
   flex: 1;
-  min-width: 300px;
   background-color: #fff;
   padding: 1.5rem;
   border: 1px solid #ddd;
@@ -82,8 +81,8 @@
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
-  padding: 0.8rem;
+  width: 90%;
+  padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9rem;
@@ -104,8 +103,16 @@
   background-color: #005bb5;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 705px) {
   .contact-container {
     flex-direction: column;
+  }
+  .contact-main {
+    padding: 1rem;
+    background-color: #f8f9fa;
+  }
+  .contact-info,
+  .contact-form {
+    padding: 0.5rem;
   }
 }

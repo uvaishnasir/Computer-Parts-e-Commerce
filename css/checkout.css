@@ -96,7 +96,7 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.cart-item {
+.cart-item-checkout {
   display: flex;
   align-items: flex-start;
   flex-direction: row;
@@ -159,7 +159,7 @@ body {
   color: #28a745;
 }
 
-.quantity-controls {
+.quantity-controls-checkout {
   box-sizing: border-box;
   width: 80%;
   display: flex;
@@ -167,7 +167,7 @@ body {
   margin-top: 5px;
 }
 
-.quantity-controls button {
+.quantity-controls-checkout button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -214,7 +214,7 @@ body {
 
 /* Responsive Design */
 @media (max-width: 700px) {
-  .cart-item {
+  .cart-item-checkout {
     flex-direction: column;
     align-items: center;
   }
