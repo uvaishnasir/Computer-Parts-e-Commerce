@@ -226,6 +226,7 @@ body {
   color: #f0f0f0;
   transition: background-color 0.2s ease;
   margin-top: 25px;
+  margin-bottom: 15px;
 }
 .shop-now:hover {
   background-color: #256396;
@@ -266,6 +267,9 @@ body {
   }
 
   .checkout-container {
+    padding-bottom: 10px;
+  }
+  .checkout-page {
     padding: 0px;
   }
 }
