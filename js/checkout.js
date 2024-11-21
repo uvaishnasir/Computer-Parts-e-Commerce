@@ -139,6 +139,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       updateQuantityEventListeners();
     }
+    //checkout button event listener
+    if (cart.size >= 1) {
+      document.querySelector(".checkout-btn").addEventListener("click", () => {
+        // Redirect to checkout page
+        window.location.href = "/Computer-Parts-e-Commerce/checkout.html";
+      });
+    }
   }
 
   function updateQuantityEventListeners() {
@@ -164,4 +171,32 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   updateCart();
+
+  //event listener on remove button
+  document.querySelector(".remove-item").addEventListener("click", () => {
+    cart.delete(5);
+    updateCart();
+    //get checkout container(class=.checkout-container) and clear its HTML
+    const checkoutContainer = document.querySelector(".checkout-container");
+    checkoutContainer.innerHTML = "";
+    const emptyCartImg = document.createElement("img");
+    emptyCartImg.src = "./assets/emptyCart.png";
+    emptyCartImg.alt = "Empty Cart Image";
+    emptyCartImg.classList.add("empty-cart-img");
+
+    const emptyMessage = document.createElement("h2");
+    emptyMessage.textContent = "SHOPPING CART IS EMPTY!";
+    emptyMessage.style.textAlign = "center";
+    emptyMessage.style.margin = "20px 0px";
+    const shopping = document.createElement("button");
+    shopping.classList.add("shop-now");
+    shopping.textContent = "Continue With Shopping";
+    checkoutContainer.appendChild(emptyCartImg);
+    checkoutContainer.appendChild(emptyMessage);
+    checkoutContainer.appendChild(shopping);
+    //event listener on continue shopping button
+    document.querySelector(".shop-now").addEventListener("click", () => {
+      window.location.href = "/Computer-Parts-e-Commerce/home.html";
+    });
+  });
 });

@@ -126,9 +126,13 @@ document.addEventListener("DOMContentLoaded", function () {
       checkoutBtn.textContent = "Proceed to Checkout";
       checkoutBtn.classList.add("checkout-btn");
       cartItemsList.appendChild(checkoutBtn);
-
       updateQuantityEventListeners();
     }
+    //checkout button event listener
+    document.querySelector(".checkout-btn").addEventListener("click", () => {
+      // Redirect to checkout page
+      window.location.href = "/Computer-Parts-e-Commerce/checkout.html";
+    });
   }
 
   function updateQuantityEventListeners() {

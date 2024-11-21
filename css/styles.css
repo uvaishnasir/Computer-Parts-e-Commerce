@@ -109,14 +109,13 @@ body {
 }
 
 /* Quantity Controls Styling */
-
 .decrease-quantity-btn,
 .increase-quantity-btn {
   background-color: #f0f0f0;
   color: #000;
   border: none;
-  padding: 10px;
-  font-size: 10px;
+  padding: 11px;
+  font-size: 11px;
   cursor: pointer;
   border-radius: 50%;
   display: flex;
