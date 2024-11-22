@@ -136,10 +136,12 @@ document.addEventListener("DOMContentLoaded", function () {
       updateQuantityEventListeners();
     }
     //checkout button event listener
-    document.querySelector(".checkout-btn").addEventListener("click", () => {
-      // Redirect to checkout page
-      window.location.href = "/Computer-Parts-e-Commerce/checkout.html";
-    });
+    if (cart.size >= 1) {
+      document.querySelector(".checkout-btn").addEventListener("click", () => {
+        // Redirect to checkout page
+        window.location.href = "/Computer-Parts-e-Commerce/checkout.html";
+      });
+    }
   }
 
   function updateQuantityEventListeners() {

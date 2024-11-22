@@ -169,7 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
   updateCart();
 
   //event listener on remove button

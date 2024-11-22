@@ -2,6 +2,7 @@
 .contact-main {
   padding: 2rem;
   background-color: #f8f9fa;
+  padding-bottom: 20rem;
 }
 
 .contact-header {
@@ -65,7 +66,7 @@
 .contact-details i {
   font-size: 1.2rem;
   margin-right: 0.5rem;
-  color: #0066cc;
+  color: #104a8a;
 }
 
 .contact-form .form-group {
@@ -90,7 +91,7 @@
 }
 
 .contact-form button {
-  background-color: #0066cc;
+  background-color: #104a8a;
   color: #fff;
   border: none;
   padding: 0.8rem 1.2rem;
@@ -100,7 +101,7 @@
 }
 
 .contact-form button:hover {
-  background-color: #005bb5;
+  transform: scale(1.05);
 }
 
 @media (max-width: 705px) {

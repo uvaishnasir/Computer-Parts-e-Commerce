@@ -36,10 +36,13 @@ button {
 }
 
 button {
-  background: #4d47c3;
+  background: #104a8a;
   color: #fff;
   margin: 50px 0px;
   cursor: pointer;
+}
+button:hover {
+  transform: scale(1.05);
 }
 
 .forgot {
@@ -49,9 +52,11 @@ button {
   text-align: right;
   color: #b0b0b0;
 }
-
+.forgot:hover {
+  color: #104a8a;
+}
 .register-here {
-  color: #4d47c3;
+  color: #104a8a;
   text-decoration: none;
 }
 

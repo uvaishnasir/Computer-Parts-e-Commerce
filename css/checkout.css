@@ -18,6 +18,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  padding-bottom: 25rem;
 }
 
 .checkout-title {
@@ -67,14 +68,14 @@ body {
 
 .savings {
   font-size: 0.9rem;
-  color: #28a745;
+  color: #104a8a;
   margin-top: 10px;
 }
 
 .place-order-btn {
   width: 100%;
   padding: 10px;
-  background-color: #28a745;
+  background-color: #104a8a;
   color: white;
   border: none;
   border-radius: 4px;
@@ -84,7 +85,7 @@ body {
 }
 
 .place-order-btn:hover {
-  background-color: #218838;
+  transform: scale(1.05);
 }
 
 /* General Styling for Cart Item */
@@ -156,7 +157,7 @@ body {
 .offers,
 .discount-off {
   font-size: 0.9rem;
-  color: #28a745;
+  color: #104a8a;
 }
 
 .quantity-controls-checkout {
@@ -182,7 +183,7 @@ body {
   border: 0.1px solid #a3a3a3;
 }
 .quantity-controls-checkout button:hover {
-  background-color: #007bff;
+  background-color: #104a8a;
   color: white;
 }
 
@@ -222,14 +223,14 @@ body {
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
-  background-color: #1367ef;
+  background-color: #104a8a;
   color: #f0f0f0;
   transition: background-color 0.2s ease;
   margin-top: 25px;
   margin-bottom: 15px;
 }
 .shop-now:hover {
-  background-color: #256396;
+  transform: scale(1.05);
 }
 .empty-cart-img {
   object-fit: cover;
@@ -248,8 +249,9 @@ body {
 
 .save-item:hover,
 .remove-item:hover {
-  color: #007bff;
+  color: #104a8a;
   background: transparent;
+  transform: scale(1.05);
 }
 
 /* Responsive Design */

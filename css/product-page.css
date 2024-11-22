@@ -58,22 +58,24 @@
 
 /* "Buy Now" Button Styles */
 .buy-now-btn {
-  background-color: #fb641b;
+  background-color: #104a8a;
   color: #fff;
 }
 
 .buy-now-btn:hover {
-  background-color: #c75015;
+  background-color: #0c3663;
+  transform: scale(1.05);
 }
 
 /* "Add to Cart" Button Styles */
 .add-to-cart-btn {
-  background-color: #ff9f00;
+  background-color: #104a8a;
   color: #fff;
 }
 
 .add-to-cart-btn:hover {
-  background-color: #cc7e00;
+  background-color: #0c3663;
+  transform: scale(1.05);
 }
 
 /* details sections */
@@ -100,7 +102,7 @@
   justify-content: left;
   align-items: center;
   font-size: 28px;
-  color: #388e3c;
+  color: #104a8a;
   font-weight: bold;
   margin: 8px 0 16px;
 }
@@ -114,7 +116,7 @@
 .discount {
   font-size: 12px;
   font-weight: 500;
-  color: #388e3c;
+  color: #104a8a;
 }
 .original-price {
   text-decoration: line-through;
@@ -136,7 +138,7 @@
 }
 
 .rating-stars {
-  color: #ff9800; /* Star color */
+  color: #104a8a;
   font-size: 16px;
   margin-right: 4px;
 }
@@ -206,12 +208,12 @@
 
 .offer-icon {
   font-size: 18px; /* Size for icon */
-  color: #ff5722; /* Orange color for icon */
+  color: #104a8a; /* Orange color for icon */
   margin-right: 8px; /* Space between icon and text */
 }
 
 .offer-terms {
-  color: #007bff; /* Blue color for T&C */
+  color: #104a8a; /* Blue color for T&C */
   font-size: 12px; /* Smaller font size for T&C */
   margin-left: 4px; /* Space between offer text and T&C */
   cursor: pointer; /* Pointer cursor for T&C */
@@ -222,7 +224,7 @@
 }
 
 .view-more {
-  color: #007bff; /* Blue color for 'View more' */
+  color: #104a8a; /* Blue color for 'View more' */
   font-size: 14px; /* Font size for 'View more' */
   cursor: pointer; /* Pointer cursor for 'View more' */
   margin-top: 10px; /* Space above 'View more' */

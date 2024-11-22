@@ -8,7 +8,6 @@ body {
 
 .about-page {
   background-color: #f9f9f9;
-  padding: 20px 0;
 }
 
 .container {
@@ -19,18 +18,19 @@ body {
 
 .about-header {
   text-align: center;
-  background: linear-gradient(to bottom, #007bff, #0056b3);
+  background: linear-gradient(to bottom, #104a8a, #104c8b);
   color: white;
-  padding: 50px 20px;
+  padding: 5px;
 }
 
 .about-header h1 {
+  margin: 5px;
   font-size: 3rem;
-  margin-bottom: 10px;
 }
 
 .about-header p {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  margin: 10px;
 }
 
 .about-content {
@@ -63,10 +63,10 @@ body {
 
 .contact-banner {
   text-align: center;
-  background: #007bff;
+  background: #104a8a;
   color: white;
-  padding: 30px 20px;
-  margin-top: 20px;
+  padding: 5px;
+  padding-bottom: 15px;
 }
 
 .contact-banner h2 {
