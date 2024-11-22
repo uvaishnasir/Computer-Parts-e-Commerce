@@ -62,9 +62,7 @@ body {
 }
 
 .login-box {
-  background: rgba(16, 74, 138, 0.8);
   padding: 25px;
-  border-radius: 15px;
   width: 370px;
 }
 
@@ -133,6 +131,8 @@ button:hover {
   height: 40px;
   margin: 12px;
   transition: transform 0.2s ease-in-out;
+  background-color: transparent;
+  border-radius: 50%;
 }
 
 .continue-icon img:hover {
