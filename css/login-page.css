@@ -76,6 +76,9 @@ input {
   color: #ffffff;
   border: 1px solid #ffffff;
 }
+input::placeholder{
+  color: #b3b0b0;
+}
 
 input,
 button {
