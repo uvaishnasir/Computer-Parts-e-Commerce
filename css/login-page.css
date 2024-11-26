@@ -17,7 +17,8 @@ body {
 }
 
 .login-container {
-  background: rgba(16, 74, 138, 0.9);
+  background: white;
+  opacity: 0.7;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -35,20 +36,24 @@ body {
 .login-summary h1 {
   font-size: 2rem;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #104a8a;
 }
 
 .login-summary h2 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-bottom: 15px;
-  color: white;
+  color: #104a8a;
 }
 
 .login-summary p {
   font-size: 1rem;
   margin-bottom: 20px;
   line-height: 1.6;
-  color: #cfe2f3;
+  color: #104a8a;
+}
+.login-summary span {
+  color: #104a8a;
+  font-size: 0.9rem;
 }
 
 .register-here {
@@ -67,17 +72,17 @@ body {
 }
 
 .login-box h2 {
-  color: white;
+  color: #104a8a;
   margin-bottom: 15px;
 }
 
 input {
   background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  border: 1px solid #ffffff;
+  color: #104a8a;
+  border: 1px solid #104a8a;
 }
-input::placeholder{
-  color: #b3b0b0;
+input::placeholder {
+  color: grey;
 }
 
 input,
@@ -90,8 +95,8 @@ button {
 }
 
 button {
-  background: white;
-  color: #104a8a;
+  background: #104a8a;
+  color: white;
   font-size: 1rem;
   cursor: pointer;
   border: none;
@@ -99,7 +104,6 @@ button {
 }
 
 button:hover {
-  background: #ffffff;
   transform: scale(1.05);
 }
 
