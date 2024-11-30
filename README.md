@@ -14,3 +14,6 @@ A simple e-commerce website built with pure HTML, CSS, and JavaScript to showcas
 - HTML
 - CSS
 - JavaScript
+
+
+username and password is admin
